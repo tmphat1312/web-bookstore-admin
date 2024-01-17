@@ -1,5 +1,5 @@
 {
-  "name": "admin",
+  "name": "bookstore-admin-react",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,8 +10,21 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.29.5",
+    "@tanstack/react-query-devtools": "^4.29.6",
+    "axios": "^1.6.2",
+    "date-fns": "^2.30.0",
+    "focus-trap-react": "^10.2.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-error-boundary": "^4.0.4",
+    "react-hook-form": "^7.43.9",
+    "react-hot-toast": "^2.4.1",
+    "react-icons": "^4.8.0",
+    "react-router-dom": "^6.11.1",
+    "recharts": "^2.6.2",
+    "styled-components": "^5.3.10",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
