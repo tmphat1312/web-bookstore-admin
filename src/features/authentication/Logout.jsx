@@ -1,5 +1,5 @@
 import { HiArrowRightOnRectangle } from "react-icons/hi2";
-import ButtonIcon from "../../ui/ButtonIcon";
+import ButtonIcon from "../../ui/buttons/ButtonIcon";
 import SpinnerMini from "../../ui/SpinnerMini";
 import { useLogout } from "./useLogout";
 

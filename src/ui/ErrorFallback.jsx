@@ -4,7 +4,7 @@ import GlobalStyles from "../styles/GlobalStyles";
 import styled from "styled-components";
 
 import SubHeading from "./SubHeading";
-import Button from "./Button";
+import Button from "./buttons/Button";
 
 const StyledErrorFallback = styled.main`
   height: 100vh;
