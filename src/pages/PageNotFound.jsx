@@ -1,8 +1,8 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
-import { useMoveBack } from "../hooks/useMoveBack"
-import Heading from "../ui/Heading"
-import Button from "../ui/Button"
+import { useMoveBack } from "../hooks/useMoveBack";
+import SubHeading from "../ui/SubHeading";
+import Button from "../ui/Button";
 
 const StyledPageNotFound = styled.main`
   height: 100vh;
@@ -10,34 +10,34 @@ const StyledPageNotFound = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4.8rem;
+  padding: 3rem;
   background-color: var(--color-grey-50);
-`
+`;
 
 const Box = styled.div`
   background-color: var(--color-grey-0);
   border: 1px solid var(--color-grey-100);
   border-radius: var(--border-radius-md);
 
-  padding: 4.8rem;
-  flex: 0 1 76rem;
+  padding: 3rem;
+  flex: 0 1 47.5rem;
   text-align: center;
-`
+`;
 
 const NotFound = styled.div`
-  font-size: 6.4rem;
+  font-size: 4rem;
   letter-spacing: 1ch;
   color: var(--color-grey-400);
   margin-block: 1rem;
-`
+`;
 
 function PageNotFound() {
-  const moveBack = useMoveBack()
+  const moveBack = useMoveBack();
 
   return (
     <StyledPageNotFound>
       <Box>
-        <Heading as="h1">Không thể tìm thấy trang 😢</Heading>
+        <SubHeading as="h1">Không thể tìm thấy trang 😢</SubHeading>
         <NotFound role="presentation">404</NotFound>
         <Button onClick={moveBack} size="large">
           <span role="presentation">&larr; </span>
@@ -45,7 +45,7 @@ function PageNotFound() {
         </Button>
       </Box>
     </StyledPageNotFound>
-  )
+  );
 }
 
-export default PageNotFound
+export default PageNotFound;

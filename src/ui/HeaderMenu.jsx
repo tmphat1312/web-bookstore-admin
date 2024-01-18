@@ -8,7 +8,7 @@ import ButtonIcon from "./ButtonIcon";
 
 const StyledHeaderMenu = styled.ul`
   display: flex;
-  gap: 0.4rem;
+  gap: 0.25rem;
 `;
 
 function HeaderMenu() {

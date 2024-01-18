@@ -1,23 +1,23 @@
 import styled from "styled-components";
-import Heading from "./Heading";
+import SubHeading from "./SubHeading";
 import ResetURLButton from "./ResetURLButton";
 import RefreshButton from "./RefreshButton";
 
 const Container = styled.div`
   background-color: var(--color-grey-0);
   border: 1px solid var(--color-grey-100);
-  border-radius: 8px;
+  border-radius: var(--border-radius-lg);
   padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
-function PageHeading({ children, queryKey, noReset = false }) {
+function PageHeading({ children, queryKey, reset }) {
   return (
     <Container>
-      <Heading as="h1">{children}</Heading>
-      {!noReset && <ResetURLButton />}
+      <SubHeading>{children}</SubHeading>
+      {reset && <ResetURLButton />}
       {queryKey && <RefreshButton queryKey={queryKey} />}
     </Container>
   );
