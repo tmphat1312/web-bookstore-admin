@@ -3,7 +3,7 @@ import { useCreateUser } from "./useCreateUser";
 
 import FormHeading from "../../ui/FormHeading";
 import FormRow from "../../ui/FormRow";
-import Button from "../../ui/Button";
+import Button from "../../ui/buttons/Button";
 import Select from "../../ui/Select";
 import Input from "../../ui/Input";
 import Form from "../../ui/Form";

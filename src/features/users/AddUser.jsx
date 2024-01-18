@@ -1,5 +1,5 @@
 import Modal from "../../ui/Modal";
-import Button from "../../ui/Button";
+import Button from "../../ui/buttons/Button";
 import CreateUserForm from "./CreateUserForm";
 
 function AddUser() {

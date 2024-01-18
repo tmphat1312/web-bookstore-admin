@@ -16,7 +16,6 @@ export function translator(key, value, lang = "vi") {
   key = key.toUpperCase();
 
   const result = DICTIONARY[key][value] || value.replace(/[_-]/g, " ");
-  const translated = result[lang];
 
-  return translated;
+  return result[lang];
 }

@@ -4,7 +4,7 @@ import { useSignup } from "./useSignup";
 
 import FormRowVertical from "../../ui/FormRowVertical";
 import FormRow from "../../ui/FormRow";
-import Button from "../../ui/Button";
+import Button from "../../ui/buttons/Button";
 import Input from "../../ui/Input";
 import Form from "../../ui/Form";
 import { FORM_RULES } from "../../constants/form";
@@ -84,7 +84,7 @@ function SignupForm() {
       <FormRow hasButton>
         <Button disabled={isLoading}>Đăng ký</Button>
         <Button
-          type="button"
+          type="buttons/Button"
           variation="secondary"
           disabled={isLoading}
           onClick={() => navigate("/login")}

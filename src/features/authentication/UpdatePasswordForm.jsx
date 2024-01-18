@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 
 import FormRow from "../../ui/FormRow";
-import Button from "../../ui/Button";
+import Button from "../../ui/buttons/Button";
 import Input from "../../ui/Input";
 import Form from "../../ui/Form";
 import { useUpdatePassword } from "./useUpdatePassword";

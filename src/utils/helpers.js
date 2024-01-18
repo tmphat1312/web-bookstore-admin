@@ -1,35 +1,6 @@
 import { format, parseISO } from "date-fns";
 
 /**
- * Returns the current date as an ISO string.
- * @param {Object} options - Optional parameters.
- * @param {boolean} options.end - If true, sets the time to the end of the day.
- * @returns {string} The current date as an ISO string.
- */
-export function getToday(options = {}) {
-  const today = new Date();
-
-  if (options && options.end) {
-    today.setUTCHours(23, 59, 59, 999);
-  } else {
-    today.setUTCHours(0, 0, 0, 0);
-  }
-
-  return today.toISOString();
-}
-
-/**
- * Pads a string with a specified character to a specified length.
- * @param {string|number} str - The string to pad.
- * @param {number} length - The desired length of the padded string.
- * @param {string} [char="0"] - The character used for padding. Defaults to "0".
- * @returns {string} The padded string.
- */
-export function padNumber(str, length, char = "0") {
-  return str.toString().padStart(length, char);
-}
-
-/**
  * Formats a Vietnamese phone number by adding spaces between digits.
  * If the phoneNumber is falsy, it returns a string with three sets of three underscores.
  * @param {number|string} phoneNumber - The phone number to be formatted.
@@ -41,8 +12,7 @@ export function formatVietnamesePhoneNumber(phoneNumber) {
   }
 
   const phone = phoneNumber.toString();
-  const formattedPhone = phone.replace(/(\d{4})(\d{3})(\d{3})/, "$1 $2 $3");
-  return formattedPhone;
+  return phone.replace(/(\d{4})(\d{3})(\d{3})/, "$1 $2 $3");
 }
 
 /**
@@ -51,7 +21,7 @@ export function formatVietnamesePhoneNumber(phoneNumber) {
  * @returns {string} The formatted currency value.
  */
 export function formatVietnameseCurrency(value) {
-  if (value !== 0 && !value) {
+  if (value != 0 && !value) {
     return "___ ___ ___";
   }
 
@@ -143,8 +113,7 @@ export function toTitleCase(value) {
  */
 export function generatePasswordFromEmail(email) {
   const emailParts = email.split("@");
-  const generatedPassword = emailParts[0].toString().padEnd(8, "0");
-  return generatedPassword;
+  return emailParts[0].toString().padEnd(8, "0");
 }
 
 /**
@@ -157,15 +126,6 @@ export function getImageUrl(path) {
 }
 
 /**
- * Generates a placeholder image URL with the given name.
- * @param {string} name - The name to be displayed on the placeholder image.
- * @returns {string} The URL of the generated placeholder image.
- */
-export function getPlaceholderImageUrl(name) {
-  return `https://ui-avatars.com/api/?name=${name}&background=random&rounded=true&size=48&font-size=0.33&bold=true&color=fff&length=1`;
-}
-
-/**
  * Converts an object to an array by mapping its values.
  *
  * @param {Object} obj - The object to be converted.
@@ -174,9 +134,8 @@ export function getPlaceholderImageUrl(name) {
 export function objectToArray(obj) {
   const cloned = { ...obj };
   const keys = Object.keys(cloned);
-  const arr = keys.map((key) => cloned[key]);
 
-  return arr;
+  return keys.map((key) => cloned[key]);
 }
 
 /**
@@ -231,19 +190,4 @@ export function getErrorMessage(error) {
   const errMsg =
     error?.response?.data?.message || error?.response?.data?.errors;
   return errMsg || "Có lỗi xảy ra, vui lòng thử lại.";
-}
-
-/**
- * Converts a full date string to a short date format.
- * @param {string} date - The full date string in the format "YYYY-MM-DD".
- * @returns {string} The short date string in the format "DD/MM" or "MM/YYYY" if the input is invalid.
- */
-export function fullDateToShortDate(date) {
-  const dateArr = date.split("-");
-
-  if (dateArr.length !== 3) {
-    return `${dateArr[1]}/${dateArr[0]}`;
-  }
-
-  return `${dateArr[2]}/${dateArr[1]}`;
 }
