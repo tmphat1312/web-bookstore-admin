@@ -1,8 +1,8 @@
 import { Navigate } from "react-router-dom";
 import { useUser } from "../features/authentication/useUser";
 
-import FullPageSpinner from "./FullPageSpinner";
-import AppLayout from "./AppLayout";
+import FullPageSpinner from "./spinners/FullPageSpinner";
+import AppLayout from "./layout/AppLayout";
 
 function ProtectedRoute({ children }) {
   const { isAuthenticated, isLoading } = useUser();

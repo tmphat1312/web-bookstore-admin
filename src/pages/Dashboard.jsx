@@ -1,5 +1,5 @@
 import DashboardLayout from "../features/dashboard/DashboardLayout";
-import BackgroundHeading from "../ui/BackgroundHeading";
+import BackgroundHeading from "../ui/headings/BackgroundHeading";
 
 function Dashboard() {
   return (

@@ -4,7 +4,7 @@ import { useUpdateUser } from "./useUpdateUser";
 
 import FileInput from "../../ui/FileInput";
 import FormRow from "../../ui/FormRow";
-import Button from "../../ui/Button";
+import Button from "../../ui/buttons/Button";
 import Input from "../../ui/Input";
 import Form from "../../ui/Form";
 
@@ -66,7 +66,7 @@ function UpdateUserDataForm({ user }) {
 
       <FormRow hasButton>
         <Button
-          type="button"
+          type="buttons/Button"
           variation="secondary"
           disabled={!isSubmitting}
           onClick={() => reset(defaultValues)}

@@ -1,9 +1,7 @@
 import styled from "styled-components";
 
-const SubHeading = styled.h2`
+export default styled.h1`
   font-size: 2rem;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.4;
 `;
-
-export default SubHeading;

@@ -1,7 +1,7 @@
-import BackgroundHeading from "../ui/BackgroundHeading";
+import BackgroundHeading from "../ui/headings/BackgroundHeading";
 
 function Categories() {
-  return <BackgroundHeading>Sản phẩm</BackgroundHeading>;
+  return <BackgroundHeading>Danh mục sản phẩm</BackgroundHeading>;
 }
 
 export default Categories;

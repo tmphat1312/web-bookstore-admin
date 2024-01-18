@@ -4,9 +4,9 @@ import { useLogin } from "./useLogin";
 
 import { FORM_RULES } from "../../constants/form";
 
-import SpinnerMini from "../../ui/SpinnerMini";
-import Button from "../../ui/Button";
-import Row from "../../ui/Row";
+import SpinnerMini from "../../ui/spinners/SpinnerMini";
+import Button from "../../ui/buttons/Button";
+import Row from "../../ui/layout/Row";
 
 import FormRow from "../../ui/forms/FormRowVertical";
 import Form from "../../ui/forms/Form";

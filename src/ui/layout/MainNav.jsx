@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
-import { ADMIN_ROUTES } from "../constants/routes";
+import { ADMIN_ROUTES } from "../../constants/routes";
 
 const Nav = styled.nav`
   block-size: 100%;

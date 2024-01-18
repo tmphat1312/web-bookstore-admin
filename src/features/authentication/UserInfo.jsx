@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import SpinnerMini from "../../ui/SpinnerMini";
+import SpinnerMini from "../../ui/spinners/SpinnerMini";
 import Tag from "../../ui/Tag";
 import { useUser } from "./useUser";
 

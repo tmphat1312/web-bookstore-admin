@@ -7,10 +7,18 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { DarkModeProvider } from "./context/DarkModeContext";
 
-import Login from "./pages/Login";
+import ProtectedRoute from "./ui/ProtectedRoute";
+
 import PageNotFound from "./pages/PageNotFound";
 import RedirectPage from "./pages/RedirectPage";
-import ProtectedRoute from "./ui/ProtectedRoute";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import Categories from "./pages/Categories";
+import Users from "./pages/Users";
+import Books from "./pages/Books";
+import Statistics from "./pages/Statistics";
+import Account from "./pages/Account";
+import Settings from "./pages/Settings";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -32,13 +40,13 @@ function App() {
           <Routes>
             <Route element={<ProtectedRoute />}>
               <Route index element={<RedirectPage />} />
-              <Route path="dashboard" element={<div>Dashboard</div>} />
-              <Route path="categories" element={<div>Categories</div>} />
-              <Route path="users" element={<div>Users</div>} />
-              <Route path="books" element={<div>Books</div>} />
-              <Route path="statistics" element={<div>Statistics</div>} />
-              <Route path="account" element={<div>Account</div>} />
-              <Route path="settings" element={<div>Settings</div>} />
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="categories" element={<Categories />} />
+              <Route path="users" element={<Users />} />
+              <Route path="books" element={<Books />} />
+              <Route path="statistics" element={<Statistics />} />
+              <Route path="account" element={<Account />} />
+              <Route path="settings" element={<Settings />} />
             </Route>
 
             <Route path="login" element={<Login />} />

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import SubHeading from "./SubHeading";
-import ResetURLButton from "./ResetURLButton";
-import RefreshButton from "./RefreshButton";
+import ResetURLButton from "./buttons/ResetURLButton";
+import RefreshButton from "./buttons/RefreshButton";
 
 const Container = styled.div`
   background-color: var(--color-grey-0);

@@ -4,7 +4,7 @@ import { useEditUser } from "./useEditUser";
 import FormHeading from "../../ui/FormHeading";
 import FormRow from "../../ui/FormRow";
 import Select from "../../ui/Select";
-import Button from "../../ui/Button";
+import Button from "../../ui/buttons/Button";
 import Input from "../../ui/Input";
 import Form from "../../ui/Form";
 

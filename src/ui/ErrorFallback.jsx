@@ -3,7 +3,7 @@ import GlobalStyles from "../styles/GlobalStyles";
 
 import styled from "styled-components";
 
-import SubHeading from "./SubHeading";
+import SubHeading from "./headings/SubHeading";
 import Button from "./buttons/Button";
 
 const StyledErrorFallback = styled.main`

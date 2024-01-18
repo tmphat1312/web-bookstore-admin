@@ -98,9 +98,6 @@ export default createGlobalStyle`
 
     --font-heading: 'Bricolage Grotesque', sans-serif;
     --font-body: 'Noto Sans Display', sans-serif;
-
-    /* --main-width: 120rem;
-    --main-width-sm: 76rem; */
   }
 
   *,

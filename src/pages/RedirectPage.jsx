@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 import { useUser } from "../features/authentication/useUser";
-import FullPageSpinner from "../ui/FullPageSpinner";
+import FullPageSpinner from "../ui/spinners/FullPageSpinner";
 
 export default function RedirectPage() {
   const { isLoading, isAuthenticated } = useUser();

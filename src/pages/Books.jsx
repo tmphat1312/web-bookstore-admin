@@ -1,4 +1,4 @@
-import BackgroundHeading from "../ui/BackgroundHeading";
+import BackgroundHeading from "../ui/headings/BackgroundHeading";
 
 function Books() {
   return <BackgroundHeading>Sản phẩm</BackgroundHeading>;
