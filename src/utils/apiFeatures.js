@@ -1,4 +1,3 @@
-// @ts-check
 /**
  * Builds URL parameters based on the provided resource name and options.
  * @param {string} resourceName - The name of the resource.
