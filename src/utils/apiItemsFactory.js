@@ -75,7 +75,7 @@ export function createEditItemFactory(name) {
     }
 
     const res = await axiosClient.post(
-      `${name}`,
+      name,
       Array.isArray(data) ? data : postData,
       config
     );
