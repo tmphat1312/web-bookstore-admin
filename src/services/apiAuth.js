@@ -52,7 +52,8 @@ export async function signup({ password, passwordConfirm, email, name }) {
 export async function getCurrentUser() {
   const { data } = await axiosClient.get("auth/me");
 
-  return data.data;
+  // return data.data;
+  return { name: "admin" };
 }
 
 /**
