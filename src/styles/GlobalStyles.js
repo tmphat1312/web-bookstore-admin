@@ -96,6 +96,9 @@ export default createGlobalStyle`
     --border-300: 1px solid var(--color-grey-300);
     --border-dashed: 2px dashed var(--color-grey-300);
 
+    --font-heading: 'Bricolage Grotesque', sans-serif;
+    --font-body: 'Noto Sans Display', sans-serif;
+
     /* --main-width: 120rem;
     --main-width-sm: 76rem; */
   }
