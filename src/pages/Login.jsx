@@ -1,10 +1,11 @@
 import { Navigate } from "react-router-dom";
-import { useUser } from "../features/authentication/useUser";
 
 import LoginForm from "../features/authentication/LoginForm";
+import { useUser } from "../features/authentication/useUser";
+
 import FullPageSpinner from "../ui/FullPageSpinner";
-import FormLayout from "../ui/FormLayout";
-import Heading from "../ui/Heading";
+import SubHeading from "../ui/SubHeading";
+import FormLayout from "../ui/forms/FormLayout";
 import Logo from "../ui/Logo";
 
 function Login() {
@@ -21,7 +22,7 @@ function Login() {
   return (
     <FormLayout>
       <Logo />
-      <Heading as="h4">Đăng nhập vào hệ thống</Heading>
+      <SubHeading className="text-center">Đăng nhập vào hệ thống</SubHeading>
       <LoginForm />
     </FormLayout>
   );
