@@ -32,6 +32,13 @@ function App() {
           <Routes>
             <Route element={<ProtectedRoute />}>
               <Route index element={<RedirectPage />} />
+              <Route path="dashboard" element={<div>Dashboard</div>} />
+              <Route path="categories" element={<div>Categories</div>} />
+              <Route path="users" element={<div>Users</div>} />
+              <Route path="books" element={<div>Books</div>} />
+              <Route path="statistics" element={<div>Statistics</div>} />
+              <Route path="account" element={<div>Account</div>} />
+              <Route path="settings" element={<div>Settings</div>} />
             </Route>
 
             <Route path="login" element={<Login />} />

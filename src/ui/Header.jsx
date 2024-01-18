@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import HeaderMenu from "./HeaderMenu";
-import UserInfo from "../features/authentication/UserAvatar";
+import UserInfo from "../features/authentication/UserInfo";
 
 const StyledHeader = styled.header`
   background-color: var(--color-grey-0);

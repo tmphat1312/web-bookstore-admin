@@ -1,20 +1,20 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
-import { useUser } from "../features/authentication/useUser";
-import { ROUTES_MAP } from "../constants/nav";
+import { ADMIN_ROUTES } from "../constants/routes";
 
 const Nav = styled.nav`
   block-size: 100%;
+  font-family: var(--font-heading);
 `;
 
 const NavList = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 0.5rem;
   block-size: 100%;
 
-  & li:last-child {
+  li:has([data-meta="bottom"]) {
     margin-top: auto;
   }
 `;
@@ -27,10 +27,9 @@ const StyledNavLink = styled(NavLink)`
     gap: 1.2rem;
 
     color: var(--color-grey-600);
-    font-size: 1.6rem;
     font-weight: 500;
-    padding: 1.2rem 2.4rem;
-    transition: all 0.3s;
+    padding: 0.75rem 1.5rem;
+    transition: all 200ms;
   }
 
   &:hover,
@@ -43,10 +42,10 @@ const StyledNavLink = styled(NavLink)`
   }
 
   & svg {
-    width: 2.4rem;
-    height: 2.4rem;
+    width: 1.5rem;
+    height: 1.5rem;
     color: var(--color-grey-400);
-    transition: all 0.3s;
+    transition: all 200ms;
   }
 
   &:hover svg,
@@ -58,20 +57,12 @@ const StyledNavLink = styled(NavLink)`
 `;
 
 function MainNav() {
-  const { user, isLoading } = useUser();
-
-  if (isLoading) {
-    return null;
-  }
-  const role = user.role ?? "customer";
-  const routes = ROUTES_MAP[role];
-
   return (
     <Nav>
       <NavList>
-        {routes.map((route) => (
+        {ADMIN_ROUTES.map((route) => (
           <li key={route.path}>
-            <StyledNavLink to={route.path}>
+            <StyledNavLink to={route.path} data-meta={route.meta}>
               <route.icon />
               <span>{route.name}</span>
             </StyledNavLink>

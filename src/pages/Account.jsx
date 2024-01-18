@@ -17,9 +17,7 @@ function Account() {
 
   return (
     <>
-      <BackgroundHeading as="h1">
-        Cập nhật thông tin tài khoản
-      </BackgroundHeading>
+      <BackgroundHeading>Cập nhật thông tin tài khoản</BackgroundHeading>
       <Row>
         <Heading as="h3">Thông tin người dùng</Heading>
         <UpdateUserDataForm user={user} />

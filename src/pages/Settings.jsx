@@ -5,7 +5,7 @@ import Row from "../ui/Row";
 function Settings() {
   return (
     <Row>
-      <BackgroundHeading as="h1">Cài đặt</BackgroundHeading>
+      <BackgroundHeading>Cài đặt</BackgroundHeading>
       <UpdateSettingsForm />
     </Row>
   );
