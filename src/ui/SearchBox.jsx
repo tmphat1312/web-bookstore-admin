@@ -4,7 +4,7 @@ import { HiXMark } from "react-icons/hi2";
 import styled from "styled-components";
 
 import Input from "./Input";
-import Button from "./Button";
+import Button from "./buttons/Button";
 
 const SearchBoxContainer = styled.form`
   display: inline-flex;

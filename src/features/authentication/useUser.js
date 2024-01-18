@@ -15,7 +15,7 @@ export function useUser() {
   } = useQuery({
     queryKey: [QUERY_KEYS.USER],
     queryFn: getCurrentUser,
-    onError: (err) => {
+    onError: () => {
       if (location.pathname !== "/login") {
         navigate("/login", { replace: true });
         queryClient.removeQueries();

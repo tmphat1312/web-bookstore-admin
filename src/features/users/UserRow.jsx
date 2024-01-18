@@ -1,7 +1,7 @@
 import { HiPencil, HiTrash } from "react-icons/hi2";
 
 import ConfirmDelete from "../../ui/ConfirmDelete";
-import SpinnerMini from "../../ui/SpinnerMini";
+import SpinnerMini from "../../ui/spinners/SpinnerMini";
 import Menus from "../../ui/Menus";
 import Modal from "../../ui/Modal";
 import Table from "../../ui/Table";
