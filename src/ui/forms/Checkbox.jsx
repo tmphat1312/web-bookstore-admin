@@ -4,7 +4,7 @@ const StyledCheckbox = styled.div`
   display: flex;
   gap: 0.75rem;
 
-  & input[type="checkbox"] {
+  input {
     height: 1.5rem;
     aspect-ratio: 1;
     outline-offset: 2px;
@@ -12,11 +12,11 @@ const StyledCheckbox = styled.div`
     accent-color: var(--color-brand-600);
   }
 
-  & input[type="checkbox"]:disabled {
+  input:disabled {
     accent-color: var(--color-brand-600);
   }
 
-  & label {
+  label {
     flex: 1;
     display: flex;
     align-items: center;
