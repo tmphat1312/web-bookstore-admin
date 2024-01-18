@@ -4,22 +4,22 @@ const Form = styled.form`
   ${(props) =>
     props.type === "regular" &&
     css`
-      padding: 2.4rem 4rem;
+      padding: 1.5rem 2.5rem;
       background-color: var(--color-grey-0);
       border: var(--border-100);
       border-radius: var(--border-radius-md);
+      box-shadow: var(--shadow-md);
     `}
 
   ${(props) =>
     props.type === "modal" &&
     css`
-      /* width: min(80rem, 100%); */
-      width: 80rem;
-      padding-block: 1.2rem;
+      width: min(50rem, 100%);
+      /* width: 80rem; */
+      padding-block: 0.75rem;
     `}
 
   contain: paint;
-  font-size: 1.4rem;
 `;
 
 Form.defaultProps = {

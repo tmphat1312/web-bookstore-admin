@@ -2,21 +2,15 @@ import styled, { css } from "styled-components";
 
 const sizes = {
   small: css`
-    font-size: 1.2rem;
-    padding: 0.4rem 0.8rem;
-    text-transform: uppercase;
-    font-weight: 600;
-    text-align: center;
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
   `,
   medium: css`
-    font-size: 1.4rem;
-    padding: 1.2rem 1.6rem;
-    font-weight: 500;
+    font-size: 0.875rem;
+    padding: 0.65rem 0.8rem;
   `,
   large: css`
-    font-size: 1.6rem;
-    padding: 1.2rem 2.4rem;
-    font-weight: 500;
+    padding: 0.75rem 1.25rem;
   `,
 };
 
@@ -52,6 +46,7 @@ const Button = styled.button`
   border: none;
   border-radius: var(--border-radius-sm);
   box-shadow: var(--shadow-sm);
+  font-weight: 500;
 
   ${(props) => sizes[props.size]}
   ${(props) => variations[props.variation]}

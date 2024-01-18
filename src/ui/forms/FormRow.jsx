@@ -3,18 +3,18 @@ import styled, { css } from "styled-components";
 const StyledFormRow = styled.div`
   display: grid;
   align-items: center;
-  grid-template-columns: 24rem 1fr 1.2fr;
-  gap: 2.4rem;
+  grid-template-columns: 15rem 1fr 1.2fr;
+  gap: 1.5rem;
 
   ${(props) =>
     props.hasButton &&
     css`
       display: flex;
       justify-content: flex-end;
-      gap: 1.2rem;
+      gap: 0.75rem;
     `}
 
-  padding: 1.2rem 0;
+  padding: 0.75rem 0;
 
   &:first-child {
     padding-top: 0;
@@ -31,7 +31,7 @@ const StyledFormRow = styled.div`
   &:has(button) {
     display: flex;
     justify-content: flex-end;
-    gap: 1.2rem;
+    gap: 0.75rem;
   }
 `;
 
