@@ -6,23 +6,21 @@ import {
   formatVietnameseCurrency,
   formatVietnamesePhoneNumber,
   getImageUrl,
-  padNumber,
 } from "../utils/helpers";
 
 const StyledTable = styled.div`
-  font-size: 1.4rem;
+  font-size: 0.875rem;
   background-color: var(--color-grey-0);
-  border-radius: 7px;
-  border: 1px solid var(--color-grey-200);
-  overflow: hidden;
+  border-radius: var(--border-radius-md);
+  border: var(--border-200);
+  contain: paint;
 `;
 
 const CommonRow = styled.div`
   display: grid;
   grid-template-columns: ${(props) => props.columns};
-  column-gap: 2.4rem;
+  column-gap: 1.5rem;
   align-items: center;
-  transition: none;
 
   &:hover {
     background-color: var(--color-grey-50);
@@ -30,43 +28,43 @@ const CommonRow = styled.div`
 `;
 
 const StyledHeader = styled(CommonRow)`
-  padding: 1.6rem 2.4rem;
-  border-bottom: 1px solid var(--color-grey-100);
+  padding: 1rem 1.5rem;
+  border-bottom: var(--border-100);
   color: var(--color-grey-600);
-  background-color: var(--color-grey-50);
+  background-color: var(--color-grey-100);
   font-weight: 600;
+  font-family: var(--font-heading);
   letter-spacing: 0.4px;
   text-transform: uppercase;
 `;
 
 const StyledRow = styled(CommonRow)`
-  padding: 1.2rem 2.4rem;
+  padding: 0.75rem 1.5rem;
 
   &:not(:last-child) {
-    border-bottom: 1px solid var(--color-grey-100);
+    border-bottom: var(--border-100);
   }
 `;
 
 const StyledBody = styled.section`
-  margin: 0.4rem 0;
+  margin-block: 0.25rem;
 `;
 
 const Footer = styled.footer`
-  background-color: var(--color-grey-50);
+  background-color: var(--color-grey-100);
   display: flex;
   justify-content: center;
-  padding: 1.2rem;
+  padding: 0.75rem;
 
-  &:not(:has(*)) {
+  &:empty {
     display: none;
   }
 `;
 
 const Empty = styled.p`
-  font-size: 1.6rem;
   font-weight: 500;
   text-align: center;
-  margin: 2.4rem;
+  margin: 1.5rem;
 `;
 
 const Name = styled.span`
@@ -104,24 +102,14 @@ const StyledThumbnail = styled.img`
 const Stacked = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.15rem;
+  contain: paint;
 
-  overflow: hidden;
-
-  & span {
+  & > * {
     display: inline-block;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-  }
-
-  & span:first-child {
-    font-weight: 500;
-  }
-
-  & span:last-child {
-    color: var(--color-grey-500);
-    font-size: 1.2rem;
   }
 `;
 
@@ -160,12 +148,6 @@ const StyledImg = styled.img`
   border-radius: 1px;
   font-size: 0.8rem;
   font-style: italic;
-`;
-
-const StyledRating = styled.div`
-  font-size: 1.6rem;
-  font-weight: 600;
-  text-align: center;
 `;
 
 const Text = styled.span``;
@@ -232,7 +214,7 @@ function DateTime({ children }) {
 }
 
 function Serial({ children }) {
-  return <Text>{padNumber(children, 3)}</Text>;
+  return <Text>{children.toString().padStart(3, "0")}</Text>;
 }
 
 function Thumbnail({ src, alt, placeholder }) {
@@ -251,10 +233,6 @@ function Img({ src, ...props }) {
   return <StyledImg src={getImageUrl(src)} {...props} />;
 }
 
-function Rating({ children }) {
-  return <StyledRating>{children?.toFixed(1) ?? "__"}</StyledRating>;
-}
-
 Table.Header = Header;
 Table.Body = Body;
 Table.Row = Row;
@@ -268,7 +246,6 @@ Table.Column = {
   NoThumbnail,
   Number,
   Text,
-  Rating,
   Img,
   Phone,
   Date,
