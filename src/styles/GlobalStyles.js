@@ -144,6 +144,10 @@ export default createGlobalStyle`
   }
 
   :where(input, button, textarea, select) {
+    &:focus {
+      outline: none;
+    }
+
     &:focus-visible {
       outline: 4px solid var(--color-brand-200);
       outline-offset: 2px;
@@ -154,7 +158,7 @@ export default createGlobalStyle`
       color: var(--color-grey-500);
     }
 
-    &:active {
+    &:not(input):active {
       background-color: var(--color-brand-200);
     }
   }
