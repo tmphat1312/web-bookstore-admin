@@ -9,11 +9,12 @@ import Button from "./buttons/Button";
 const SearchBoxContainer = styled.form`
   display: inline-flex;
   align-items: stretch;
-  gap: 1px;
+  box-shadow: var(--shadow-sm);
 `;
 
 const SearchInputContainer = styled.div`
   --reset-button-size: 3.6rem;
+
   position: relative;
   display: flex;
 `;
@@ -42,12 +43,8 @@ const ResetButton = styled.button`
 `;
 
 const SearchButton = styled(Button)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  gap: 0.25rem;
 `;
 
 function SearchBox({ queryName = "q" }) {
