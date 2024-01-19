@@ -153,6 +153,10 @@ export default createGlobalStyle`
       background-color: var(--color-grey-100);
       color: var(--color-grey-500);
     }
+
+    &:active {
+      background-color: var(--color-brand-200);
+    }
   }
 
 
