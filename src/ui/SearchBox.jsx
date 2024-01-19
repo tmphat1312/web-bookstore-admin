@@ -3,7 +3,7 @@ import { useState } from "react";
 import { HiXMark } from "react-icons/hi2";
 import styled from "styled-components";
 
-import Input from "./Input";
+import Input from "./forms/Input";
 import Button from "./buttons/Button";
 
 const SearchBoxContainer = styled.form`
