@@ -5,6 +5,8 @@ import { useUser } from "../authentication/useUser";
 import ActionButton from "../../ui/buttons/ActionButton";
 import SpinnerMini from "../../ui/spinners/SpinnerMini";
 import Column from "../../ui/Column";
+import ConfirmAction from "../../ui/ConfirmAction";
+import ConfirmModal from "../../ui/ConfirmModal";
 
 export default function UserRowActions({ id }) {
   const { user, isLoading } = useUser();
@@ -16,7 +18,7 @@ export default function UserRowActions({ id }) {
   const isCurrentUser = user.id === id;
 
   return (
-    <>
+    <ConfirmModal>
       {isCurrentUser ? (
         <Column.Highlight>Me</Column.Highlight>
       ) : (
@@ -24,11 +26,16 @@ export default function UserRowActions({ id }) {
           <ActionButton>
             <CiEdit />
           </ActionButton>
-          <ActionButton danger>
-            <HiTrash />
-          </ActionButton>
+          <ConfirmModal.Open opens="update">
+            <ActionButton danger>
+              <HiTrash />
+            </ActionButton>
+          </ConfirmModal.Open>
+          <ConfirmModal.Window name="update">
+            <ConfirmAction />
+          </ConfirmModal.Window>
         </Column.HStacked>
       )}
-    </>
+    </ConfirmModal>
   );
 }
