@@ -10,8 +10,6 @@ function UserTableOperations() {
         options={[
           { value: "all", label: "Tất cả" },
           { value: "admin", label: "Admin" },
-          { value: "staff", label: "Nhân viên" },
-          { value: "cashier", label: "Thu ngân" },
           { value: "customer", label: "Khách hàng" },
         ]}
       />

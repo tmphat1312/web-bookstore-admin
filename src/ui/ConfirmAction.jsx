@@ -1,22 +1,52 @@
+import styled from "styled-components";
 import Button from "./buttons/Button";
-import Heading from "./Heading";
-import Confirm from "./Confirm";
+import SubHeading from "./headings/SubHeading";
 
-function ConfirmAction({
-  disabled,
+const Confirm = styled.div`
+  max-inline-size: 32rem;
+  margin: auto;
+  padding: 1.5rem;
+  border: var(--border-200);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background-color: transparent;
+
+  & p {
+    color: var(--color-grey-500);
+    margin-bottom: 0.75rem;
+  }
+
+  & div {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+  }
+`;
+
+export default function ConfirmAction({
   title,
+  disabled,
   description,
-  closeOnConfirm = true,
   danger = false,
   onConfirm = () => {},
   onCloseModal = () => {},
 }) {
+  const confirmTitle = title ?? "Xác nhận hành động";
+  const confirmDescription =
+    description ?? `Bạn có chắc chắn muốn thực hiện hành động này không?`;
+
+  function handleConfirm() {
+    onConfirm();
+    onCloseModal();
+  }
+
   return (
     <Confirm>
-      <Heading as="h3">{title ?? "Xác nhận hành động"}</Heading>
-      <p>
-        {description ?? `Bạn có chắc chắn muốn thực hiện hành động này không?`}
-      </p>
+      <SubHeading>{confirmTitle}</SubHeading>
+      <p>{confirmDescription}</p>
 
       <div>
         <Button
@@ -29,10 +59,7 @@ function ConfirmAction({
         <Button
           disabled={disabled}
           variation={danger ? "danger" : "primary"}
-          onClick={() => {
-            onConfirm();
-            closeOnConfirm && onCloseModal();
-          }}
+          onClick={handleConfirm}
         >
           Xác nhận
         </Button>
@@ -40,5 +67,3 @@ function ConfirmAction({
     </Confirm>
   );
 }
-
-export default ConfirmAction;

@@ -1,16 +1,15 @@
 // import AddUser from "../features/users/AddUser";
-// import UserTable from "../features/users/UserTable";
-// import UserTableOperations from "../features/users/UserTableOperations";
-// import PageHeading from "../ui/PageHeading";
-import BackgroundHeading from "../ui/headings/BackgroundHeading";
+import UserTable from "../features/users/UserTable";
+import UserTableOperations from "../features/users/UserTableOperations";
+import PageHeading from "../ui/headings/PageHeading";
 
 function Users() {
   return (
     <>
-      <BackgroundHeading>Quản lý người dùng</BackgroundHeading>
-      {/* <UserTableOperations />
+      <PageHeading reset>Quản lý người dùng</PageHeading>
+      <UserTableOperations />
       <UserTable />
-      <AddUser /> */}
+      {/* <AddUser /> */}
     </>
   );
 }

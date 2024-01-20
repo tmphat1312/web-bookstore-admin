@@ -8,9 +8,9 @@ const rotate = keyframes`
 `;
 
 const SpinnerMini = styled(BiLoaderAlt)`
-  width: 2.4rem;
+  width: 1.5rem;
   aspect-ratio: 1 / 1;
-  animation: ${rotate} 1.5s infinite linear;
+  animation: ${rotate} 1500ms infinite linear;
 `;
 
 export default SpinnerMini;

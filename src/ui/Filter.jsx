@@ -1,35 +1,37 @@
 import { useSearchParams } from "react-router-dom";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const StyledFilter = styled.div`
-  border: 1px solid var(--color-grey-100);
+  border: var(--border-100);
   background-color: var(--color-grey-0);
   box-shadow: var(--shadow-sm);
   border-radius: var(--border-radius-sm);
-  padding: 0.4rem;
+  padding: 0.25rem;
   display: flex;
-  gap: 0.4rem;
+  gap: 0.25rem;
+  flex-wrap: wrap;
 `;
 
 const FilterButton = styled.button`
-  background-color: var(--color-grey-0);
+  background-color: transparent;
   border: none;
-
-  ${(props) =>
-    props.active &&
-    css`
-      background-color: var(--color-brand-600);
-      color: var(--color-brand-50);
-    `}
 
   border-radius: var(--border-radius-sm);
   font-weight: 500;
-  font-size: 1.4rem;
-  padding: 0.44rem 0.8rem;
-  transition: all 0.3s;
+  font-size: 0.875rem;
+  padding: 0.15rem 0.5rem;
+
+  &:disabled {
+    background-color: var(--color-brand-600);
+    color: var(--color-brand-50);
+
+    &:hover {
+      background-color: var(--color-grey-400);
+    }
+  }
 
   &:hover:not(:disabled) {
-    background-color: var(--color-brand-600);
+    background-color: var(--color-brand-400);
     color: var(--color-brand-50);
   }
 `;
@@ -61,7 +63,6 @@ function Filter({ filterField, options }) {
         <FilterButton
           key={option.value}
           onClick={() => handleClick(option.value)}
-          active={option.value === currentFilter}
           disabled={option.value === currentFilter}
         >
           {option.label}
