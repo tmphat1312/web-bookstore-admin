@@ -52,6 +52,10 @@ const StyledFooter = styled.footer`
   background-color: var(--color-grey-100);
   display: flex;
   justify-content: center;
+
+  &:empty {
+    display: none;
+  }
 `;
 
 const Empty = styled.p`
