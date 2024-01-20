@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-  --_container-width: 75rem;
+  --_container-width: 90rem;
 
   max-inline-size: var(--_container-width, 120rem);
   margin-inline: auto;
@@ -10,8 +10,6 @@ const Container = styled.div`
   flex-direction: column;
   gap: 1.5rem;
   contain: paint;
-
-  ${(props) => props.sm && `--main-width: var(--main-width-sm, 120rem);`}
 `;
 
 export default Container;
