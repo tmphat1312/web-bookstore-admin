@@ -1,19 +1,5 @@
 import { format, parseISO } from "date-fns";
-
-/**
- * Formats a Vietnamese phone number by adding spaces between digits.
- * If the phoneNumber is falsy, it returns a string with three sets of three underscores.
- * @param {number|string} phoneNumber - The phone number to be formatted.
- * @returns {string} The formatted phone number.
- */
-export function formatVietnamesePhoneNumber(phoneNumber) {
-  if (!phoneNumber) {
-    return "___ ___ ___";
-  }
-
-  const phone = phoneNumber.toString();
-  return phone.replace(/(\d{4})(\d{3})(\d{3})/, "$1 $2 $3");
-}
+import { AVAILABLE_COLORS } from "../styles/GlobalStyles";
 
 /**
  * Formats a number as Vietnamese currency.
@@ -117,15 +103,6 @@ export function generatePasswordFromEmail(email) {
 }
 
 /**
- * Returns the complete image URL by concatenating the base URL with the provided path.
- * @param {string} path - The path of the image.
- * @returns {string} - The complete image URL.
- */
-export function getImageUrl(path) {
-  return import.meta.env.VITE_IMAGE_BASE_URL + path;
-}
-
-/**
  * Converts an object to an array by mapping its values.
  *
  * @param {Object} obj - The object to be converted.
@@ -160,10 +137,9 @@ export function buildOptions(object) {
  * @returns {Object} - The tag options object with lowercase keys.
  */
 export function buildTagOptions(object) {
-  const AVAILABLE_COLORS = ["grey", "blue", "green", "silver", "indigo", "red"];
   const length = AVAILABLE_COLORS.length;
   let idx = 0;
-  let tagObj = {};
+  const tagObj = {};
 
   Object.keys(object).forEach((k) => {
     const word = object[k];

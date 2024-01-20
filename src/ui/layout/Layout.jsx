@@ -6,8 +6,8 @@ export default styled.div`
   --_sidebar-max-width: 20rem;
 
   max-inline-size: var(--_app-width, 120rem);
-  min-block-size: 100vh;
-  min-block-size: 100svh;
+  block-size: 100vh;
+  block-size: 100svh;
   margin-inline: auto;
   border: var(--border-200);
   border-radius: var(--border-radius-md);

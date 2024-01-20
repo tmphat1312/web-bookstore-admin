@@ -193,6 +193,9 @@ export default createGlobalStyle`
     background-repeat: no-repeat;
     background-size: cover;
     shape-margin: 0.75rem;
+    object-fit: cover;
+    object-position: center;
+    font-size: 0.75rem;
 
     filter: grayscale(var(--image-grayscale)) opacity(var(--image-opacity));
   }
@@ -213,3 +216,12 @@ export default createGlobalStyle`
     text-align: center;
   }
 `;
+
+export const AVAILABLE_COLORS = [
+  "grey",
+  "blue",
+  "green",
+  "silver",
+  "indigo",
+  "red",
+];
