@@ -40,6 +40,10 @@ const ResetButton = styled.button`
     color: var(--color-red-700);
     transform: scale(1.25);
   }
+
+  &:active {
+    background-color: transparent;
+  }
 `;
 
 const SearchButton = styled(Button)`
