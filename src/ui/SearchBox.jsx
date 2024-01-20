@@ -3,17 +3,18 @@ import { useState } from "react";
 import { HiXMark } from "react-icons/hi2";
 import styled from "styled-components";
 
-import Input from "./Input";
+import Input from "./forms/Input";
 import Button from "./buttons/Button";
 
 const SearchBoxContainer = styled.form`
   display: inline-flex;
   align-items: stretch;
-  gap: 1px;
+  box-shadow: var(--shadow-sm);
 `;
 
 const SearchInputContainer = styled.div`
   --reset-button-size: 3.6rem;
+
   position: relative;
   display: flex;
 `;
@@ -39,15 +40,15 @@ const ResetButton = styled.button`
     color: var(--color-red-700);
     transform: scale(1.25);
   }
+
+  &:active {
+    background-color: transparent;
+  }
 `;
 
 const SearchButton = styled(Button)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  gap: 0.25rem;
 `;
 
 function SearchBox({ queryName = "q" }) {

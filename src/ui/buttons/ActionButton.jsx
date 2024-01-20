@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-const ButtonIcon = styled.button`
-  background: none;
+const ActionButton = styled.button`
+  background: transparent;
   border: none;
   padding: 0.375rem;
   border-radius: var(--border-radius-sm);
@@ -11,15 +11,21 @@ const ButtonIcon = styled.button`
   }
 
   & svg {
-    width: 1.375rem;
-    height: 1.375rem;
-
-    ${(props) => !props.raw && "fill: var(--color-brand-600)"}
+    width: 1.25rem;
+    height: 1.25rem;
   }
 
   &:disabled svg {
     fill: var(--color-grey-400);
   }
+
+  ${({ danger }) =>
+    danger &&
+    `
+    & svg {
+      fill: var(--color-red-700);
+    }
+  `}
 `;
 
-export default ButtonIcon;
+export default ActionButton;

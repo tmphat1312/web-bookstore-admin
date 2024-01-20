@@ -12,15 +12,15 @@ export const ADMIN_ROUTES = objectToArray({
     name: "Trang chủ",
     icon: HiOutlineHome,
   },
-  CATEGORIES: {
-    path: "/categories",
-    name: "Danh mục",
-    icon: BiCategory,
-  },
   USERS: {
     path: "/users",
     name: "Người dùng",
     icon: MdPeople,
+  },
+  CATEGORIES: {
+    path: "/categories",
+    name: "Danh mục",
+    icon: BiCategory,
   },
   BOOKS: {
     path: "/books",

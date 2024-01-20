@@ -14,23 +14,19 @@ const StyledPagination = styled.div`
 
 const PaginationBox = styled.div`
   width: 100%;
-  margin-top: 2.4rem;
-  padding: 1.2rem;
-  border-radius: 8px;
+  margin-top: 1.5rem;
+  padding: 0.75rem;
+  border-radius: var(--border-radius-md);
   border: 2px dashed var(--color-brand-200);
   background-color: var(--color-grey-0);
 `;
 
 const P = styled.p`
-  font-size: 1.4rem;
+  font-size: 0.875rem;
   margin-left: 0.8rem;
 
-  @media (width < 768px) {
-    font-size: 1.2rem;
-  }
-
   & span {
-    font-weight: 600;
+    font-weight: 500;
   }
 `;
 
@@ -40,36 +36,25 @@ const Buttons = styled.div`
 `;
 
 const PaginationButton = styled.button`
-  background-color: ${(props) =>
-    props.active ? " var(--color-brand-600)" : "var(--color-grey-50)"};
-  color: ${(props) => (props.active ? " var(--color-brand-50)" : "inherit")};
   border: none;
   border-radius: var(--border-radius-sm);
-  font-weight: 500;
-  font-size: 1.4rem;
-
-  @media (width < 768px) {
-    font-size: 1.2rem;
-  }
-
+  background-color: transparent;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  padding: 0.6rem 1.2rem;
-  transition: all 0.3s;
+  gap: 0.25rem;
+  padding: 0.375rem 0.75rem;
 
   &:has(span:last-child) {
-    padding-left: 0.4rem;
+    padding-left: 0.25rem;
   }
 
   &:has(span:first-child) {
-    padding-right: 0.4rem;
+    padding-right: 0.25rem;
   }
 
   & svg {
-    height: 1.8rem;
-    width: 1.8rem;
+    height: 1.125rem;
+    aspect-ratio: 1;
   }
 
   &:hover:not(:disabled) {
@@ -80,9 +65,9 @@ const PaginationButton = styled.button`
 
 function Pagination({ count, hasBox = false, compact = false }) {
   const [searchParams, setSearchParams] = useSearchParams();
-  const currentPage = !searchParams.get("page")
-    ? 1
-    : Number(searchParams.get("page"));
+  const currentPage = searchParams.get("page")
+    ? Number(searchParams.get("page"))
+    : 1;
 
   const pageCount = Math.ceil(count / PAGE_SIZE);
 
@@ -107,7 +92,11 @@ function Pagination({ count, hasBox = false, compact = false }) {
   return (
     <Container>
       <StyledPagination>
-        {!compact ? (
+        {compact ? (
+          <P>
+            Trang <span>{currentPage}</span> / <span>{pageCount}</span>
+          </P>
+        ) : (
           <P>
             Hiển thị <span>{(currentPage - 1) * PAGE_SIZE + 1}</span> &rarr;{" "}
             <span>
@@ -115,15 +104,11 @@ function Pagination({ count, hasBox = false, compact = false }) {
             </span>{" "}
             trong <span>{count}</span> kết quả
           </P>
-        ) : (
-          <P>
-            Trang <span>{currentPage}</span> / <span>{pageCount}</span>
-          </P>
         )}
 
         <Buttons>
           <PaginationButton onClick={prevPage} disabled={currentPage === 1}>
-            <HiChevronLeft /> <span>Trước</span>
+            <HiChevronLeft role="presentation" /> <span>Trước</span>
           </PaginationButton>
 
           <PaginationButton
@@ -131,7 +116,7 @@ function Pagination({ count, hasBox = false, compact = false }) {
             disabled={currentPage === pageCount}
           >
             <span>Sau</span>
-            <HiChevronRight />
+            <HiChevronRight role="presentation" />
           </PaginationButton>
         </Buttons>
       </StyledPagination>
