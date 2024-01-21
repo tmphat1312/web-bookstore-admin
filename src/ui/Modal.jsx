@@ -6,18 +6,6 @@ import FocusTrap from "focus-trap-react";
 import { useOutsideClick } from "../hooks/useOutsideClick";
 import { useEscape } from "../hooks/useEscape";
 
-const StyledModal = styled.div`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: var(--color-grey-0);
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-lg);
-  padding: 3.2rem 4rem;
-  transition: all 0.5s;
-`;
-
 const Overlay = styled.div`
   position: fixed;
   top: 0;
@@ -27,30 +15,43 @@ const Overlay = styled.div`
   background-color: var(--backdrop-color);
   backdrop-filter: blur(4px);
   z-index: 1000;
-  transition: all 0.5s;
+  transition: all 500ms;
+`;
+
+const StyledBaseModal = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--color-grey-0);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+`;
+
+const StyledModal = styled(StyledBaseModal)`
+  --_modal-padding: 2rem;
+
+  padding: var(--_modal-padding);
 `;
 
 const Button = styled.button`
-  background: none;
+  --_button-offset: calc(var(--_modal-padding) * 0.25);
+
+  background: transparent;
   border: none;
-  padding: 0.4rem;
+  padding: 0.25rem;
   border-radius: var(--border-radius-sm);
-  transform: translateX(0.8rem);
-  transition: all 0.2s;
   position: absolute;
-  top: 1.2rem;
-  right: 1.9rem;
+  top: var(--_button-offset);
+  right: var(--_button-offset);
 
   &:hover {
     background-color: var(--color-grey-100);
   }
 
   & svg {
-    width: 2.4rem;
-    height: 2.4rem;
-    /* Sometimes we need both */
-    /* fill: var(--color-grey-500);
-    stroke: var(--color-grey-500); */
+    width: 1.5rem;
+    height: 1.5rem;
     color: var(--color-grey-500);
   }
 `;
@@ -61,10 +62,9 @@ function Modal({ children }) {
   const [openName, setOpenName] = useState("");
 
   const close = () => setOpenName("");
-  const open = setOpenName;
 
   return (
-    <ModalContext.Provider value={{ openName, close, open }}>
+    <ModalContext.Provider value={{ openName, close, open: setOpenName }}>
       {children}
     </ModalContext.Provider>
   );
@@ -76,24 +76,30 @@ function Open({ children, opens: opensWindowName }) {
   return cloneElement(children, { onClick: () => open(opensWindowName) });
 }
 
-function Window({ children, name }) {
+function Window({ children, name, closeButton = false }) {
   const { openName, close } = useContext(ModalContext);
   const ref = useOutsideClick(close);
   useEscape(close);
 
   if (name !== openName) return null;
 
+  const Modal = closeButton ? (
+    <StyledModal ref={ref}>
+      <Button onClick={close}>
+        <HiXMark />
+      </Button>
+
+      <div>{cloneElement(children, { onCloseModal: close })}</div>
+    </StyledModal>
+  ) : (
+    <StyledBaseModal ref={ref}>
+      <div>{cloneElement(children, { onCloseModal: close })}</div>
+    </StyledBaseModal>
+  );
+
   return createPortal(
     <Overlay>
-      <FocusTrap>
-        <StyledModal ref={ref}>
-          <Button onClick={close}>
-            <HiXMark />
-          </Button>
-
-          <div>{cloneElement(children, { onCloseModal: close })}</div>
-        </StyledModal>
-      </FocusTrap>
+      <FocusTrap>{Modal}</FocusTrap>
     </Overlay>,
     document.body
   );

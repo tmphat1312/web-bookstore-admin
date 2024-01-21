@@ -24,7 +24,7 @@ export function useApiMutation({
 }) {
   const queryClient = useQueryClient();
 
-  const mutation = useMutation({
+  return useMutation({
     mutationFn: (...data) => {
       toast.dismiss();
       toast.loading("Đang xử lý...");
@@ -48,6 +48,4 @@ export function useApiMutation({
       onError(err);
     },
   });
-
-  return mutation;
 }

@@ -1,32 +1,18 @@
-import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { useLocation, useNavigate } from "react-router-dom";
-import { getCurrentUser } from "../../services/apiAuth";
+import { useQuery } from "@tanstack/react-query";
 import { QUERY_KEYS } from "../../constants/keys";
+import { getCurrentUser } from "../../services/apiAuth";
 
 export function useUser() {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const queryClient = useQueryClient();
-
-  const {
-    isLoading,
-    data: user = {},
-    error,
-  } = useQuery({
+  const { isLoading, data: user = {} } = useQuery({
     queryKey: [QUERY_KEYS.USER],
     queryFn: getCurrentUser,
-    onError: () => {
-      if (location.pathname !== "/login") {
-        navigate("/login", { replace: true });
-        queryClient.removeQueries();
-      }
-    },
-    retry: false,
     staleTime: Infinity,
-    refetchOnWindowFocus: false,
+    cacheTime: Infinity,
+    retry: false,
     refetchOnMount: false,
+    refetchOnWindowFocus: false,
     refetchOnReconnect: false,
   });
 
-  return { isLoading, user, isAuthenticated: !error && !isLoading };
+  return { isLoading, user, isAuthenticated: user && !!user.id };
 }

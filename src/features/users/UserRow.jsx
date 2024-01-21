@@ -4,7 +4,7 @@ import UserRowActions from "./UserRowActions";
 import { ROLE } from "../../constants/dictionary";
 
 function UserRow({ user = {}, serial }) {
-  const { id, name, email, image, role } = user;
+  const { name, email, image, role } = user;
 
   return (
     <Table.Row>
@@ -13,7 +13,7 @@ function UserRow({ user = {}, serial }) {
       <Column>{name}</Column>
       <Column>{email}</Column>
       <Column.TableTag dictionary={ROLE}>{role}</Column.TableTag>
-      <UserRowActions id={id} />
+      <UserRowActions user={user} />
     </Table.Row>
   );
 }
