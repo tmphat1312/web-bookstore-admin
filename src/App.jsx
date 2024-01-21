@@ -7,18 +7,17 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { DarkModeProvider } from "./context/DarkModeContext";
 
-import ProtectedRoute from "./ui/ProtectedRoute";
-
-import PageNotFound from "./pages/PageNotFound";
-import RedirectPage from "./pages/RedirectPage";
-import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard";
-import Categories from "./pages/Categories";
-import Users from "./pages/Users";
-import Books from "./pages/Books";
-import Statistics from "./pages/Statistics";
 import Account from "./pages/Account";
+import Books from "./pages/Books";
+import Categories from "./pages/Categories";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
+import PageNotFound from "./pages/PageNotFound";
+import ProtectedRoute from "./pages/ProtectedRoute";
+import RedirectPage from "./pages/RedirectPage";
 import Settings from "./pages/Settings";
+import Statistics from "./pages/Statistics";
+import Users from "./pages/Users";
 
 const queryClient = new QueryClient({
   defaultOptions: {
