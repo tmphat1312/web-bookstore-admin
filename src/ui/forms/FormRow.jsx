@@ -1,37 +1,15 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
+import { cloneElement } from "react";
 
 const StyledFormRow = styled.div`
   display: grid;
   align-items: center;
-  grid-template-columns: 15rem 1fr 1.2fr;
+  grid-template-columns: 9.375rem 1fr 1.2fr;
   gap: 1.5rem;
-
-  ${(props) =>
-    props.hasButton &&
-    css`
-      display: flex;
-      justify-content: flex-end;
-      gap: 0.75rem;
-    `}
-
-  padding: 0.75rem 0;
-
-  &:first-child {
-    padding-top: 0;
-  }
-
-  &:last-child {
-    padding-bottom: 0;
-  }
+  padding-block: 0.75rem;
 
   &:not(:last-child) {
-    border-bottom: 1px solid var(--color-grey-100);
-  }
-
-  &:has(button) {
-    display: flex;
-    justify-content: flex-end;
-    gap: 0.75rem;
+    border-bottom: var(--border-100);
   }
 `;
 
@@ -39,17 +17,23 @@ const Label = styled.label`
   font-weight: 500;
 `;
 
-const Error = styled.span`
-  font-size: 1.4rem;
+const ErrorMessage = styled.span`
+  font-size: 0.875rem;
   color: var(--color-red-700);
 `;
 
-function FormRow({ label, error, children, ...props }) {
+function FormRow({ label, property, errors, children, ...props }) {
+  const error = errors?.[property]?.message;
+
+  if (children.length > 1) {
+    throw new Error("FormRow only accepts 1 child");
+  }
+
   return (
     <StyledFormRow {...props}>
-      {label && <Label htmlFor={children.props.id}>{label}</Label>}
-      {children}
-      {error && <Error>{error}</Error>}
+      {label && <Label htmlFor={property}>{label}</Label>}
+      {cloneElement(children, { id: property })}
+      {error && <ErrorMessage>{error}</ErrorMessage>}
     </StyledFormRow>
   );
 }

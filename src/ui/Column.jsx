@@ -25,17 +25,9 @@ function Image({ src }) {
 }
 
 const HStacked = styled.div`
-  contain: paint;
   display: flex;
   align-items: center;
   gap: 0.15rem;
-
-  & > * {
-    display: inline-block;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-  }
 `;
 
 const VStacked = styled(HStacked)`
