@@ -164,6 +164,8 @@ export function buildTagOptions(object) {
  */
 export function getErrorMessage(error) {
   const errMsg =
-    error?.response?.data?.message || error?.response?.data?.errors;
+    error?.response.data?.message ||
+    error?.response.data?.error?.errorMessage ||
+    error?.response?.error?.errorMessage;
   return errMsg || "Có lỗi xảy ra, vui lòng thử lại.";
 }
