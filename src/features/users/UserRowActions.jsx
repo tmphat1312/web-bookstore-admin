@@ -34,7 +34,12 @@ export default function UserRowActions({ id }) {
             </ActionButton>
           </ConfirmModal.Open>
           <ConfirmModal.Window name="update">
-            <ConfirmAction disabled={isDeleting} onConfirm={deleteUser} />
+            <ConfirmAction
+              danger
+              title="Xóa tài khoản"
+              disabled={isDeleting}
+              onConfirm={deleteUser}
+            />
           </ConfirmModal.Window>
         </Column.HStacked>
       )}
