@@ -157,8 +157,10 @@ export default createGlobalStyle`
       background-color: var(--color-grey-100);
       color: var(--color-grey-500);
     }
+  }
 
-    &:not(input, :disabled):active {
+  button:active {
+    &:not(:disabled) {
       background-color: var(--color-brand-200);
     }
   }
