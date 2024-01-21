@@ -2,7 +2,7 @@ import Modal from "../../ui/Modal";
 import Button from "../../ui/buttons/Button";
 import CreateUserForm from "./CreateUserForm";
 
-function AddUser() {
+function CreateUserAction() {
   return (
     <div>
       <Modal>
@@ -10,7 +10,7 @@ function AddUser() {
           <Button>Tạo tài khoản</Button>
         </Modal.Open>
 
-        <Modal.Window>
+        <Modal.Window closeButton>
           <CreateUserForm />
         </Modal.Window>
       </Modal>
@@ -18,4 +18,4 @@ function AddUser() {
   );
 }
 
-export default AddUser;
+export default CreateUserAction;

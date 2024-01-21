@@ -4,6 +4,7 @@ import { useUsers } from "./useUsers";
 import LoadingProgress from "../../ui/LoadingProgress";
 import Pagination from "../../ui/Pagination";
 import Table from "../../ui/Table";
+import CreateUserAction from "./CreateUserAction";
 
 export default function UserTable() {
   const state = useUsers();
@@ -30,6 +31,8 @@ export default function UserTable() {
           <Pagination count={state.count} />
         </Table.Footer>
       </Table>
+
+      <CreateUserAction />
     </LoadingProgress>
   );
 }

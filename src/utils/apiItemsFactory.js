@@ -21,44 +21,35 @@ export default function apiItemsFactory(name) {
     async deleteItem(id) {
       await axiosClient.delete(`${name}/${id}`);
     },
-    async createEditItem(data = {}, id) {
-      const { image, ...fields } = data;
-      let postData = fields;
-      let config = {};
+    async createEditItem({ data: body = {}, id }) {
+      let requestConfig = {};
+      let requestBody = body;
 
-      if (image) {
+      if ("image" in body) {
         const formData = new FormData();
 
-        formData.append("image", image);
-        Object.keys(fields).forEach((key) => {
-          formData.append(key, fields[key]);
+        Object.entries(body).forEach(([key, value]) => {
+          formData.append(key, value);
         });
 
-        postData = formData;
-        config = {
+        requestBody = formData;
+        requestConfig = {
           headers: {
             "Content-Type": "multipart/form-data",
           },
         };
       }
 
-      if (id) {
-        const { data } = await axiosClient.patch(
-          `${name}/${id}`,
-          postData,
-          config
-        );
+      const axiosConfig = {
+        url: id ? `${name}/${id}` : name,
+        method: id ? "patch" : "post",
+        data: requestBody,
+        config: requestConfig,
+      };
 
-        return data;
-      }
+      const res = await axiosClient(axiosConfig);
 
-      const { data: res } = await axiosClient.post(
-        name,
-        Array.isArray(data) ? data : postData,
-        config
-      );
-
-      return res;
+      return res.data;
     },
   };
 }

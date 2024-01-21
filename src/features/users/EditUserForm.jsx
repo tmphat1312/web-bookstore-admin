@@ -1,107 +1,68 @@
 import { useForm } from "react-hook-form";
 import { useEditUser } from "./useEditUser";
 
-import FormHeading from "../../ui/FormHeading";
-import FormRow from "../../ui/FormRow";
-import Select from "../../ui/Select";
 import Button from "../../ui/buttons/Button";
-import Input from "../../ui/Input";
-import Form from "../../ui/Form";
+import Form from "../../ui/forms/Form";
+import FormButtonsContainer from "../../ui/forms/FormButtonsContainer";
+import FormHeading from "../../ui/forms/FormHeading";
+import FormRow from "../../ui/forms/FormRow";
+import Input from "../../ui/forms/Input";
+import Select from "../../ui/forms/Select";
 
 import { FORM_RULES } from "../../constants/form";
-import {
-  ROLE_OPTIONS,
-  USER_ACCOUNT_STATE_OPTIONS,
-} from "../../constants/options";
+import { ROLE_OPTIONS } from "../../constants/options";
 
 function EditUserForm({ userToEdit = {}, onCloseModal = () => {} }) {
-  const { isEditing, editUser } = useEditUser();
+  const { isEditing, editUser } = useEditUser(userToEdit.id);
 
-  const { _id: editId, active = true, ...editValues } = userToEdit;
-
-  const { register, handleSubmit, reset, formState, getValues } = useForm({
+  const { register, handleSubmit, reset, formState } = useForm({
     defaultValues: {
-      email: editValues.email,
-      name: editValues.name,
-      phone: editValues.phone,
-      role: editValues.role,
-      status: active ? "active" : "inactive",
+      name: userToEdit.name,
+      role: userToEdit.role,
     },
   });
   const { errors } = formState;
 
   function onSubmit(data) {
-    function onSuccess(data) {
+    function onSuccess() {
       reset();
       onCloseModal();
     }
 
-    const { status } = data;
-    data.active = status === "active";
-    delete data.status;
-
-    editUser({ newUserData: data, id: editId }, { onSuccess });
+    editUser({ data }, { onSuccess });
   }
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)} type="modal">
+    <Form type="modal" onSubmit={handleSubmit(onSubmit)}>
       <FormHeading as="h2">Cập nhật thông tin tài khoản</FormHeading>
 
-      <FormRow label="Email" error={errors?.email?.message}>
-        <Input
-          type="email"
-          id="email"
-          autoComplete="email"
-          disabled
-          value={getValues("email")}
-        />
+      <FormRow label="Email" property="email" errors={errors}>
+        <Input type="email" disabled value={userToEdit.email} />
       </FormRow>
 
-      <FormRow label="Hộ tên" error={errors?.name?.message}>
+      <FormRow label="Hộ tên" errors={errors} property="name">
         <Input
           type="text"
-          id="name"
           autoComplete="name"
           disabled={isEditing}
           {...register("name", FORM_RULES.FULL_NAME)}
         />
       </FormRow>
 
-      <FormRow label="Phân quyền" error={errors?.role?.message}>
+      <FormRow label="Phân quyền" property="role" errors={errors}>
         <Select
-          id="role"
           disabled={isEditing}
           options={ROLE_OPTIONS}
           {...register("role")}
         />
       </FormRow>
 
-      <FormRow label="Trạng thái" error={errors?.status?.message}>
-        <Select
-          id="status"
-          disabled={isEditing}
-          options={USER_ACCOUNT_STATE_OPTIONS}
-          {...register("status")}
-        />
-      </FormRow>
-
-      <FormRow label="Số điện thoại" error={errors?.phone?.message}>
-        <Input
-          type="tel"
-          id="phone"
-          autoComplete="phone"
-          disabled={isEditing}
-          maxLength={10}
-          {...register("phone", FORM_RULES.PHONE)}
-        />
-      </FormRow>
-
-      <FormRow>
+      <FormButtonsContainer>
         <Button variation="secondary" type="reset" onClick={onCloseModal}>
           Hủy
         </Button>
         <Button disabled={isEditing}>Lưu thay đổi</Button>
-      </FormRow>
+      </FormButtonsContainer>
     </Form>
   );
 }
