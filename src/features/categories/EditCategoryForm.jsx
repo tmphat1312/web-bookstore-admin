@@ -36,13 +36,12 @@ function EditCategoryForm({ categoryToEdit = {}, onCloseModal = () => {} }) {
       <FormHeading as="h2">Cập nhật thông tin danh mục</FormHeading>
 
       <FormRow label="Tên" property="name" errors={errors}>
-        <Input type="name" {...register("name", FORM_RULES.PRODUCT_NAME)} />
+        <Input {...register("name", FORM_RULES.PRODUCT_NAME)} />
       </FormRow>
 
       <FormRow label="Mô tả" property="description" errors={errors}>
         <Textarea
           rows={4}
-          type="description"
           {...register("description", FORM_RULES.DESCRIPTION)}
         />
       </FormRow>

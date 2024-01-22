@@ -36,14 +36,11 @@ function CreateCategoryForm({ onCloseModal = () => {} }) {
       <FormHeading as="h2">Thêm thông tin danh mục</FormHeading>
 
       <FormRow label="Tên" property="name" errors={errors}>
-        <Input type="name" {...register("name", FORM_RULES.PRODUCT_NAME)} />
+        <Input {...register("name", FORM_RULES.PRODUCT_NAME)} />
       </FormRow>
 
       <FormRow label="Mô tả" property="description" errors={errors}>
-        <Textarea
-          type="description"
-          {...register("description", FORM_RULES.DESCRIPTION)}
-        />
+        <Textarea {...register("description", FORM_RULES.DESCRIPTION)} />
       </FormRow>
 
       <FormButtonsContainer>
