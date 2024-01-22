@@ -46,9 +46,9 @@ function App() {
               <Route path="categories" element={<Categories />} />
               <Route path="users" element={<Users />} />
               <Route path="books" element={<Books />} />
+              <Route path="books/create" element={<CreateBook />} />
               <Route path="books/:id" element={<BookDetail />} />
               <Route path="books/:id/edit" element={<EditBook />} />
-              <Route path="books/:id/create" element={<CreateBook />} />
               <Route path="statistics" element={<Statistics />} />
               <Route path="account" element={<Account />} />
               <Route path="settings" element={<Settings />} />
