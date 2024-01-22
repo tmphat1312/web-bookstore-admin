@@ -22,7 +22,13 @@ const ErrorMessage = styled.span`
   color: var(--color-red-700);
 `;
 
-function FormRow({ label, property, errors, children, ...props }) {
+export default function FormRow({
+  label,
+  property,
+  errors,
+  children,
+  ...props
+}) {
   const error = errors?.[property]?.message;
 
   if (children.length > 1) {
@@ -37,5 +43,3 @@ function FormRow({ label, property, errors, children, ...props }) {
     </StyledFormRow>
   );
 }
-
-export default FormRow;
