@@ -6,12 +6,8 @@ import { QUERY_KEYS } from "../../constants/keys";
 export function useBookCategories() {
   const queryKey = [QUERY_KEYS.BOOK_CATEGORIES];
 
-  const {
-    isLoading,
-    error,
-    data: { data },
-  } = useQueryFetch({
-    fn: () => getBookCategories(),
+  const { isLoading, error, data } = useQueryFetch({
+    fn: getBookCategories,
     key: queryKey,
     cacheTime: Infinity,
     staleTime: Infinity,
@@ -20,5 +16,5 @@ export function useBookCategories() {
     refetchOnMount: false,
   });
 
-  return { isLoading, error, bookCategories: data };
+  return { isLoading, error, bookCategories: data || [] };
 }

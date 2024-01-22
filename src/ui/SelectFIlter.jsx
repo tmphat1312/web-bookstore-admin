@@ -1,7 +1,7 @@
 import { useSearchParams } from "react-router-dom";
-import Select from "./Select";
+import Select from "./forms/Select";
 
-function SelectFIlter({ options, filterField, ...props }) {
+export default function SelectFilter({ options, filterField, ...props }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentFilter = searchParams.get(filterField) || options.at(0).value;
 
@@ -33,5 +33,3 @@ function SelectFIlter({ options, filterField, ...props }) {
     />
   );
 }
-
-export default SelectFIlter;

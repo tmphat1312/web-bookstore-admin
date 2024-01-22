@@ -5,7 +5,7 @@ import PageHeading from "../ui/headings/PageHeading";
 function Books() {
   return (
     <>
-      <PageHeading>Sản phẩm</PageHeading>
+      <PageHeading reset>Sản phẩm</PageHeading>
       <BookTableOperations />
       <BookTable />
     </>
