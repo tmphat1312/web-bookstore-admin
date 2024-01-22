@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { buildTagOptions } from "../utils/helpers";
+import { buildTagOptions, formatVietnameseCurrency } from "../utils/helpers";
 import Tag from "./Tag";
 
 const StyledNumber = styled.span`
@@ -20,9 +20,9 @@ const StyledImage = styled.img`
   background-color: var(--color-grey-200);
 `;
 
-function Image({ src }) {
-  return <StyledImage src={src} />;
-}
+const StyledThumbnail = styled(StyledImage)`
+  aspect-ratio: 0.75;
+`;
 
 const HStacked = styled.div`
   display: flex;
@@ -32,6 +32,7 @@ const HStacked = styled.div`
 
 const VStacked = styled(HStacked)`
   flex-direction: column;
+  align-items: flex-start;
 `;
 
 function Highlight({ children }) {
@@ -45,15 +46,33 @@ function TableTag({ dictionary, children }) {
   return <Tag type={tag.type}>{tag.label}</Tag>;
 }
 
+const StyledPrice = styled.span`
+  font-weight: 500;
+  color: var(--color-grey-600);
+`;
+
+function Price({ children }) {
+  return <StyledPrice>{formatVietnameseCurrency(children)}</StyledPrice>;
+}
+
+const StyledName = styled.span`
+  text-wrap: balance;
+  word-break: break-all;
+  font-weight: 500;
+`;
+
 function Column({ children }) {
   return <div>{children}</div>;
 }
 
 Column.Number = Number;
-Column.Image = Image;
+Column.Image = StyledImage;
+Column.Thumbnail = StyledThumbnail;
 Column.HStacked = HStacked;
 Column.VStacked = VStacked;
 Column.Highlight = Highlight;
 Column.TableTag = TableTag;
+Column.Price = Price;
+Column.Name = StyledName;
 
 export default Column;
