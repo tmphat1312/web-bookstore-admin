@@ -4,7 +4,7 @@ import BookDetailFooter from "./BookDetailFooter";
 import BookDetailHeader from "./BookDetailHeader";
 import BookDetailInformation from "./BookDetailInformation";
 
-const StyledLayout = styled.div`
+export const StyledLayout = styled.div`
   block-size: 100%;
   display: grid;
   grid-template-columns: 1.3fr 4fr;
@@ -12,7 +12,7 @@ const StyledLayout = styled.div`
   position: relative;
 `;
 
-const StyledSticky = styled.div`
+export const StyledSticky = styled.div`
   position: sticky;
   position: sticky;
   inset-block-start: 0.5rem;
@@ -24,7 +24,7 @@ const StyledSticky = styled.div`
   align-items: center;
 `;
 
-const StyledImage = styled.img`
+export const StyledImage = styled.img`
   width: 100%;
   aspect-ratio: 9 / 12;
   border-radius: var(--border-radius-md);

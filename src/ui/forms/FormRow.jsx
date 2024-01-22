@@ -4,7 +4,7 @@ import { cloneElement } from "react";
 const StyledFormRow = styled.div`
   display: grid;
   align-items: center;
-  grid-template-columns: 9.375rem 1fr 1.2fr;
+  grid-template-columns: 9.375rem 1fr 1fr;
   gap: 1.5rem;
   padding-block: 0.75rem;
 

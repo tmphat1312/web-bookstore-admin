@@ -51,7 +51,7 @@ export const MIN_VALUE = {
 
 export const MAX_VALUE = {
   PRICE: 10_000_000,
-  STOCK_AMOUNT: 1000,
+  STOCK_AMOUNT: 100_000,
 };
 
 export const FORM_LABELS = {
@@ -63,6 +63,7 @@ export const FORM_LABELS = {
   DESCRIPTION: "Mô tả",
   STOCK_AMOUNT: "Số lượng",
   AMOUNT: "Số lượng",
+  YEAR: "Năm",
 };
 
 export const FORM_RULES = {
@@ -128,10 +129,6 @@ export const FORM_RULES = {
       value: MIN_LENGTH.DESCRIPTION,
       message: minLength(FORM_LABELS.DESCRIPTION, MIN_LENGTH.DESCRIPTION),
     },
-    maxLength: {
-      value: MAX_LENGTH.DESCRIPTION,
-      message: maxLength(FORM_LABELS.DESCRIPTION, MAX_LENGTH.DESCRIPTION),
-    },
   },
   STOCK_AMOUNT: {
     required: required(FORM_LABELS.STOCK_AMOUNT),
@@ -156,5 +153,16 @@ export const FORM_RULES = {
       message: maxValue(FORM_LABELS.AMOUNT, MAX_VALUE.STOCK_AMOUNT),
     },
     valueAsNumber: true,
+  },
+  YEAR: {
+    required: required(FORM_LABELS.YEAR),
+    min: {
+      value: 1900,
+      message: minValue(FORM_LABELS.YEAR, 1900),
+    },
+    max: {
+      value: new Date().getFullYear(),
+      message: maxValue(FORM_LABELS.YEAR, new Date().getFullYear()),
+    },
   },
 };
