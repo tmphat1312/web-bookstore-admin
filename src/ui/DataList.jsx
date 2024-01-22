@@ -5,7 +5,6 @@ const StyledList = styled.ul``;
 
 const StyledItem = styled.li`
   background-color: var(--color-grey-100);
-  padding: 0.5rem 0.75rem;
   border-radius: var(--border-radius-md);
 
   &:hover {
