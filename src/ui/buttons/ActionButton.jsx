@@ -3,7 +3,7 @@ import styled from "styled-components";
 const ActionButton = styled.button`
   background: transparent;
   border: none;
-  padding: 0.375rem;
+  padding: 0.25rem;
   border-radius: var(--border-radius-sm);
 
   &:hover:not(:disabled) {

@@ -2,11 +2,10 @@ import styled from "styled-components";
 
 const Styled = styled.h3`
   color: var(--color-blue-700);
-  font-size: 1.6rem;
-  font-weight: 500;
   background-color: var(--color-blue-100);
-  padding: 1.6rem;
-  border-radius: 8px;
+  font-weight: 500;
+  padding: 1rem;
+  border-radius: var(--border-radius-md);
 `;
 
 function Empty({ resourceName, description }) {

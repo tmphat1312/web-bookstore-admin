@@ -1,5 +1,6 @@
 import { createContext, useContext } from "react";
 import styled from "styled-components";
+import Empty from "./Empty";
 
 const StyledTable = styled.div.attrs({
   role: "table",
@@ -58,12 +59,6 @@ const StyledFooter = styled.footer`
   }
 `;
 
-const Empty = styled.p`
-  font-weight: 500;
-  text-align: center;
-  margin: 1.5rem;
-`;
-
 const TableContext = createContext();
 
 function Table({ columns, children }) {
@@ -87,7 +82,9 @@ function Row({ children }) {
 }
 
 function Body({ data, render }) {
-  if (data.length <= 0) return <Empty>Không có dữ liệu để hiển thị</Empty>;
+  if (data.length <= 0) {
+    return <Empty description="Không có dữ liệu để hiển thị" />;
+  }
 
   return <StyledBody>{data.map(render)}</StyledBody>;
 }

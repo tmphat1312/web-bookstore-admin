@@ -143,7 +143,7 @@ export default createGlobalStyle`
     cursor: not-allowed;
   }
 
-  :where(input, button, textarea, select) {
+  :where(input, button, textarea, select, summary) {
     &:focus {
       outline: none;
     }
