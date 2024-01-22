@@ -3,6 +3,7 @@ import { useMoveBack } from "../../hooks/useMoveBack";
 import Button from "../../ui/buttons/Button";
 import ButtonText from "../../ui/buttons/ButtonText";
 import BookDetailActions from "./BookDetailActions";
+import BookDetailInformation from "./BookDetailInformation";
 
 const StyledLayout = styled.div`
   block-size: 100%;
@@ -39,11 +40,6 @@ const StyledImage = styled.img`
   box-shadow: var(--shadow-md);
 `;
 
-const StyledInfoPlaceHolder = styled.section`
-  background-color: #333;
-  height: 1600px;
-`;
-
 export default function BookDetailLayout({ book = {} }) {
   const moveBack = useMoveBack();
 
@@ -55,11 +51,14 @@ export default function BookDetailLayout({ book = {} }) {
           <span>Quay lại</span>
         </ButtonText>
       </StyledHeader>
+
       <StyledSticky>
         <StyledImage src={book.image} alt={book.name} />
         <BookDetailActions book={book} />
       </StyledSticky>
-      <StyledInfoPlaceHolder />
+
+      <BookDetailInformation book={book} />
+
       <StyledFooter>
         <Button variation="secondary" onClick={moveBack}>
           Quay lại
