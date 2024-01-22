@@ -1,5 +1,8 @@
+import DataList from "../../ui/DataList";
 import LoadingProgress from "../../ui/LoadingProgress";
 import Pagination from "../../ui/Pagination";
+import CategoryItem from "./CategoryItem";
+import CategoryListContainer from "./CategoryListContainer";
 import { useCategories } from "./useCategories";
 
 export default function CategoryList() {
@@ -7,10 +10,17 @@ export default function CategoryList() {
 
   return (
     <LoadingProgress {...state} resourceName="Danh mục sản phẩm">
-      {state.categories.map((category, i) => (
-        <div key={category._id}>{category.name}</div>
-      ))}
-      <Pagination count={state.count} />
+      <CategoryListContainer>
+        <DataList
+          data={state.categories}
+          render={(category) => (
+            <DataList.Item key={category._id}>
+              <CategoryItem category={category} />
+            </DataList.Item>
+          )}
+        />
+        <Pagination count={state.count} hasContainer />
+      </CategoryListContainer>
     </LoadingProgress>
   );
 }
