@@ -19,6 +19,8 @@ import RedirectPage from "./pages/RedirectPage";
 import Settings from "./pages/Settings";
 import Statistics from "./pages/Statistics";
 import Users from "./pages/Users";
+import CreateBook from "./pages/CreateBook";
+import EditBook from "./pages/EditBook";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -45,6 +47,8 @@ function App() {
               <Route path="users" element={<Users />} />
               <Route path="books" element={<Books />} />
               <Route path="books/:id" element={<BookDetail />} />
+              <Route path="books/:id/edit" element={<EditBook />} />
+              <Route path="books/:id/create" element={<CreateBook />} />
               <Route path="statistics" element={<Statistics />} />
               <Route path="account" element={<Account />} />
               <Route path="settings" element={<Settings />} />

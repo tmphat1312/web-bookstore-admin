@@ -1,5 +1,6 @@
 import { HiMiniPencilSquare, HiTrash } from "react-icons/hi2";
 import { useDeleteBook } from "../books/useDeleteBook";
+import { useNavigate } from "react-router-dom";
 
 import Column from "../../ui/Column";
 import ConfirmAction from "../../ui/ConfirmAction";
@@ -7,33 +8,24 @@ import Modal from "../../ui/Modal";
 import ActionButton from "../../ui/buttons/ActionButton";
 
 export default function BookDetailActions({ book = {} }) {
+  const navigate = useNavigate();
   const { isDeleting, deleteBook } = useDeleteBook(book.id);
 
   return (
     <Modal>
       <Column.HStacked>
-        <Modal.Open opens="edit">
-          <ActionButton>
-            <HiMiniPencilSquare />
-          </ActionButton>
-        </Modal.Open>
+        <ActionButton
+          aria-label="Chỉnh sửa thông tin sách"
+          onClick={() => navigate(`/books/${book.id}/edit`)}
+        >
+          <HiMiniPencilSquare />
+        </ActionButton>
 
         <Modal.Open opens="delete">
           <ActionButton danger aria-label="Xóa thông tin sách">
             <HiTrash role="presentation" />
           </ActionButton>
         </Modal.Open>
-
-        <Modal.Window
-          name="edit"
-          closeButton
-          aria-label="Chỉnh sửa thông tin sách"
-        >
-          {/* <EditBookForm bookToEdit={book} /> */}
-          <div>
-            <button>hello world</button>
-          </div>
-        </Modal.Window>
 
         <Modal.Window name="delete">
           <ConfirmAction
