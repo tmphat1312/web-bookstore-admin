@@ -1,25 +1,17 @@
-import { HiEye, HiMiniPencilSquare, HiTrash } from "react-icons/hi2";
-import { useNavigate } from "react-router-dom";
-import { useDeleteBook } from "./useDeleteBook";
+import { HiMiniPencilSquare, HiTrash } from "react-icons/hi2";
+import { useDeleteBook } from "../books/useDeleteBook";
 
 import Column from "../../ui/Column";
 import ConfirmAction from "../../ui/ConfirmAction";
 import Modal from "../../ui/Modal";
 import ActionButton from "../../ui/buttons/ActionButton";
 
-export default function BookRowActions({ book = {} }) {
+export default function BookDetailActions({ book = {} }) {
   const { isDeleting, deleteBook } = useDeleteBook(book.id);
-  const navigate = useNavigate();
 
   return (
     <Modal>
       <Column.HStacked>
-        <ActionButton
-          aria-label="Xem chi tiết"
-          onClick={() => navigate(`/books/${book.id}`)}
-        >
-          <HiEye role="presentation" />
-        </ActionButton>
         <Modal.Open opens="edit">
           <ActionButton>
             <HiMiniPencilSquare />

@@ -8,6 +8,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { DarkModeProvider } from "./context/DarkModeContext";
 
 import Account from "./pages/Account";
+import BookDetail from "./pages/BookDetail";
 import Books from "./pages/Books";
 import Categories from "./pages/Categories";
 import Dashboard from "./pages/Dashboard";
@@ -43,6 +44,7 @@ function App() {
               <Route path="categories" element={<Categories />} />
               <Route path="users" element={<Users />} />
               <Route path="books" element={<Books />} />
+              <Route path="books/:id" element={<BookDetail />} />
               <Route path="statistics" element={<Statistics />} />
               <Route path="account" element={<Account />} />
               <Route path="settings" element={<Settings />} />
