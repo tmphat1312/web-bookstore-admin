@@ -3,6 +3,7 @@ import LoadingProgress from "../../ui/LoadingProgress";
 import Pagination from "../../ui/Pagination";
 import CategoryItem from "./CategoryItem";
 import CategoryListContainer from "./CategoryListContainer";
+import CreateCategoryAction from "./CreateCategoryAction";
 import { useCategories } from "./useCategories";
 
 export default function CategoryList() {
@@ -11,6 +12,7 @@ export default function CategoryList() {
   return (
     <LoadingProgress {...state} resourceName="Danh mục sản phẩm">
       <CategoryListContainer>
+        <CreateCategoryAction />
         <DataList
           data={state.categories}
           render={(category) => (
