@@ -4,6 +4,7 @@ import ConfirmAction from "../../ui/ConfirmAction";
 import Modal from "../../ui/Modal";
 import ActionButton from "../../ui/buttons/ActionButton";
 import { useDeleteCategory } from "./useDeleteCategory";
+import EditCategoryForm from "./EditCategoryForm";
 
 export default function CategoryItemActions({ category = {} }) {
   const { isDeleting, deleteCategory } = useDeleteCategory(category.id);
@@ -24,10 +25,7 @@ export default function CategoryItemActions({ category = {} }) {
         </Modal.Open>
 
         <Modal.Window name="edit" closeButton>
-          {/* <EditUserForm userToEdit={user} /> */}
-          <div>
-            <button>hello world</button>
-          </div>
+          <EditCategoryForm categoryToEdit={category} />
         </Modal.Window>
 
         <Modal.Window name="delete">
