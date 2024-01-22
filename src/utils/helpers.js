@@ -41,11 +41,16 @@ export function formatDate(dateStr) {
  * @param {string} value - The string to be converted.
  * @returns {string} - The converted string in title case.
  */
-export function toTitleCase(value) {
-  var i, j, str, lowers, uppers;
-  str = value.replace(/([^\W_]+[^\s-]*) */g, function (txt) {
-    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-  });
+export function toTitleCase(value = "") {
+  let i;
+  let j;
+  let str;
+  let lowers;
+  let uppers;
+  str = value.replace(
+    /([^\W_]+[^\s-]*) */g,
+    (txt) => txt.charAt(0).toUpperCase() + txt.slice(1).toLowerCase()
+  );
 
   // Certain minor words should be left lowercase unless
   // they are the first or last words in the string
@@ -72,21 +77,20 @@ export function toTitleCase(value) {
     "To",
     "With",
   ];
-  for (i = 0, j = lowers.length; i < j; i++)
-    str = str.replace(
-      new RegExp("\\s" + lowers[i] + "\\s", "g"),
-      function (txt) {
-        return txt.toLowerCase();
-      }
+  for (i = 0, j = lowers.length; i < j; i++) {
+    str = str.replace(new RegExp(`\\s${lowers[i]}\\s`, "g"), (txt) =>
+      txt.toLowerCase()
     );
+  }
 
-  // Certain words such as initialisms or acronyms should be left uppercase
+  // Certain words such as initialism or acronyms should be left uppercase
   uppers = ["Id", "Tv"];
-  for (i = 0, j = uppers.length; i < j; i++)
+  for (i = 0, j = uppers.length; i < j; i++) {
     str = str.replace(
-      new RegExp("\\b" + uppers[i] + "\\b", "g"),
+      new RegExp(`\\b${uppers[i]}\\b`, "g"),
       uppers[i].toUpperCase()
     );
+  }
 
   return str;
 }
