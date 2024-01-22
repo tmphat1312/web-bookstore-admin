@@ -5,20 +5,20 @@ import { useSearchParams } from "react-router-dom";
 
 import { PAGE_SIZE } from "../constants/api";
 
-const StyledPagination = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
 const PaginationBox = styled.div`
   width: 100%;
   margin-top: 1.5rem;
   padding: 0.75rem;
   border-radius: var(--border-radius-md);
-  border: 2px dashed var(--color-brand-200);
-  background-color: var(--color-grey-0);
+  border: 2px dashed var(--color-grey-300);
+  background-color: var(--color-grey-50);
+`;
+
+const StyledPagination = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 const P = styled.p`
@@ -63,7 +63,7 @@ const PaginationButton = styled.button`
   }
 `;
 
-function Pagination({ count, hasBox = false, compact = false }) {
+function Pagination({ count, hasContainer = false }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = searchParams.get("page")
     ? Number(searchParams.get("page"))
@@ -87,24 +87,18 @@ function Pagination({ count, hasBox = false, compact = false }) {
 
   if (pageCount <= 1) return null;
 
-  const Container = hasBox ? PaginationBox : React.Fragment;
+  const Container = hasContainer ? PaginationBox : React.Fragment;
 
   return (
     <Container>
       <StyledPagination>
-        {compact ? (
-          <P>
-            Trang <span>{currentPage}</span> / <span>{pageCount}</span>
-          </P>
-        ) : (
-          <P>
-            Hiển thị <span>{(currentPage - 1) * PAGE_SIZE + 1}</span> &rarr;{" "}
-            <span>
-              {currentPage === pageCount ? count : currentPage * PAGE_SIZE}
-            </span>{" "}
-            trong <span>{count}</span> kết quả
-          </P>
-        )}
+        <P>
+          Hiển thị <span>{(currentPage - 1) * PAGE_SIZE + 1}</span> &rarr;{" "}
+          <span>
+            {currentPage === pageCount ? count : currentPage * PAGE_SIZE}
+          </span>{" "}
+          trong <span>{count}</span> kết quả
+        </P>
 
         <Buttons>
           <PaginationButton onClick={prevPage} disabled={currentPage === 1}>

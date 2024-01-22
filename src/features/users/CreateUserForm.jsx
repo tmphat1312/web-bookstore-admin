@@ -48,7 +48,7 @@ function EditUserForm({ onCloseModal = () => {} }) {
         />
       </FormRow>
 
-      <FormRow label="Hộ tên" errors={errors} property="name">
+      <FormRow label="Họ tên" errors={errors} property="name">
         <Input
           type="text"
           autoComplete="name"

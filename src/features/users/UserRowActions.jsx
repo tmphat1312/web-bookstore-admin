@@ -1,5 +1,4 @@
-import { CiEdit } from "react-icons/ci";
-import { HiTrash } from "react-icons/hi2";
+import { HiMiniPencilSquare, HiTrash } from "react-icons/hi2";
 import { useUser } from "../authentication/useUser";
 import { useDeleteUser } from "./useDeleteUser";
 
@@ -28,7 +27,7 @@ export default function UserRowActions({ user = {} }) {
         <Column.HStacked>
           <Modal.Open opens="edit">
             <ActionButton>
-              <CiEdit />
+              <HiMiniPencilSquare />
             </ActionButton>
           </Modal.Open>
 
