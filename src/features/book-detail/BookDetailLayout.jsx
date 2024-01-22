@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { useMoveBack } from "../../hooks/useMoveBack";
-import Button from "../../ui/buttons/Button";
-import ButtonText from "../../ui/buttons/ButtonText";
 import BookDetailActions from "./BookDetailActions";
+import BookDetailFooter from "./BookDetailFooter";
+import BookDetailHeader from "./BookDetailHeader";
+import BookDetailInformation from "./BookDetailInformation";
 
 const StyledLayout = styled.div`
   block-size: 100%;
@@ -11,13 +11,6 @@ const StyledLayout = styled.div`
   gap: 1rem;
   position: relative;
 `;
-
-const StyledHeader = styled.header`
-  grid-column: 1 / -1;
-  text-align: end;
-`;
-
-const StyledFooter = styled(StyledHeader).attrs({ as: "footer" })``;
 
 const StyledSticky = styled.div`
   position: sticky;
@@ -39,32 +32,19 @@ const StyledImage = styled.img`
   box-shadow: var(--shadow-md);
 `;
 
-const StyledInfoPlaceHolder = styled.section`
-  background-color: #333;
-  height: 1600px;
-`;
-
 export default function BookDetailLayout({ book = {} }) {
-  const moveBack = useMoveBack();
-
   return (
     <StyledLayout>
-      <StyledHeader>
-        <ButtonText onClick={moveBack}>
-          <span role="presentation">&larr;</span>
-          <span>Quay lại</span>
-        </ButtonText>
-      </StyledHeader>
+      <BookDetailHeader book={book} />
+
       <StyledSticky>
         <StyledImage src={book.image} alt={book.name} />
         <BookDetailActions book={book} />
       </StyledSticky>
-      <StyledInfoPlaceHolder />
-      <StyledFooter>
-        <Button variation="secondary" onClick={moveBack}>
-          Quay lại
-        </Button>
-      </StyledFooter>
+
+      <BookDetailInformation book={book} />
+
+      <BookDetailFooter book={book} />
     </StyledLayout>
   );
 }
