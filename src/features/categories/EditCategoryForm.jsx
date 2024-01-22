@@ -41,6 +41,7 @@ function EditCategoryForm({ categoryToEdit = {}, onCloseModal = () => {} }) {
 
       <FormRow label="Description" property="description" errors={errors}>
         <Textarea
+          rows={4}
           type="description"
           {...register("description", FORM_RULES.DESCRIPTION)}
         />
