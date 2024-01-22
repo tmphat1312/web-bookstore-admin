@@ -14,8 +14,9 @@ const Form = styled.form`
   ${(props) =>
     props.type === "modal" &&
     css`
-      width: min(50rem, 100%);
+      width: min(40rem, 96vw);
       padding-block: 0.75rem;
+      margin-inline: auto;
     `}
 `;
 

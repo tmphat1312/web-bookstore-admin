@@ -8,6 +8,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { DarkModeProvider } from "./context/DarkModeContext";
 
 import Account from "./pages/Account";
+import BookDetail from "./pages/BookDetail";
 import Books from "./pages/Books";
 import Categories from "./pages/Categories";
 import Dashboard from "./pages/Dashboard";
@@ -18,6 +19,8 @@ import RedirectPage from "./pages/RedirectPage";
 import Settings from "./pages/Settings";
 import Statistics from "./pages/Statistics";
 import Users from "./pages/Users";
+import CreateBook from "./pages/CreateBook";
+import EditBook from "./pages/EditBook";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -43,6 +46,9 @@ function App() {
               <Route path="categories" element={<Categories />} />
               <Route path="users" element={<Users />} />
               <Route path="books" element={<Books />} />
+              <Route path="books/create" element={<CreateBook />} />
+              <Route path="books/:id" element={<BookDetail />} />
+              <Route path="books/:id/edit" element={<EditBook />} />
               <Route path="statistics" element={<Statistics />} />
               <Route path="account" element={<Account />} />
               <Route path="settings" element={<Settings />} />

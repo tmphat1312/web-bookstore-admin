@@ -18,7 +18,7 @@ function PageHeading({ children, queryKey, reset }) {
     <Container>
       <SubHeading>{children}</SubHeading>
       {reset && <ResetURLButton />}
-      {queryKey && <RefreshButton queryKey={queryKey} />}
+      {queryKey && <RefreshButton reset />}
     </Container>
   );
 }

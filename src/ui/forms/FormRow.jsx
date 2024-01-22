@@ -4,7 +4,7 @@ import { cloneElement } from "react";
 const StyledFormRow = styled.div`
   display: grid;
   align-items: center;
-  grid-template-columns: 9.375rem 1fr 1.2fr;
+  grid-template-columns: 9.375rem 1fr 1fr;
   gap: 1.5rem;
   padding-block: 0.75rem;
 
@@ -22,7 +22,13 @@ const ErrorMessage = styled.span`
   color: var(--color-red-700);
 `;
 
-function FormRow({ label, property, errors, children, ...props }) {
+export default function FormRow({
+  label,
+  property,
+  errors,
+  children,
+  ...props
+}) {
   const error = errors?.[property]?.message;
 
   if (children.length > 1) {
@@ -37,5 +43,3 @@ function FormRow({ label, property, errors, children, ...props }) {
     </StyledFormRow>
   );
 }
-
-export default FormRow;
