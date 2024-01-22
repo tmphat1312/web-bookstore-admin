@@ -41,7 +41,7 @@ const ResetButton = styled.button`
     transform: scale(1.25);
   }
 
-  &:active {
+  &:active:not(:disabled) {
     background-color: transparent;
   }
 `;
