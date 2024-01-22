@@ -40,7 +40,7 @@ function EditUserForm({ userToEdit = {}, onCloseModal = () => {} }) {
         <Input type="email" disabled value={userToEdit.email} />
       </FormRow>
 
-      <FormRow label="Hộ tên" errors={errors} property="name">
+      <FormRow label="Họ tên" errors={errors} property="name">
         <Input
           type="text"
           autoComplete="name"
