@@ -4,4 +4,5 @@ export const QUERY_KEYS = {
   CATEGORIES: "categories",
   BOOKS: "books",
   BOOK: "book",
+  BOOK_CATEGORIES: "bookCategories",
 };
