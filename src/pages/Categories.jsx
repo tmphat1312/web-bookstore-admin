@@ -1,11 +1,11 @@
 // import CategoryListOperations from "../features/categories/CategoryListOperations";
 import CategoryList from "../features/categories/CategoryList";
-import BackgroundHeading from "../ui/headings/BackgroundHeading";
+import PageHeading from "../ui/headings/PageHeading";
 
 function Categories() {
   return (
     <>
-      <BackgroundHeading>Danh mục sản phẩm</BackgroundHeading>
+      <PageHeading>Danh mục sản phẩm</PageHeading>
       {/* <CategoryListOperations /> */}
       <CategoryList />
     </>
