@@ -4,7 +4,7 @@ import { useBooks } from "./useBooks";
 import LoadingProgress from "../../ui/LoadingProgress";
 import Pagination from "../../ui/Pagination";
 import Table from "../../ui/Table";
-// import CreateBookAction from "./CreateBookAction";
+import CreateBookAction from "./CreateBookAction";
 
 export default function BookTable() {
   const state = useBooks();
@@ -30,7 +30,7 @@ export default function BookTable() {
         </Table.Footer>
       </Table>
 
-      {/* <CreateBookAction /> */}
+      <CreateBookAction />
     </LoadingProgress>
   );
 }
