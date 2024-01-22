@@ -48,6 +48,11 @@ const StyledDescription = styled.details`
 `;
 
 export default function BookDetailInformation({ book = {} }) {
+  const shortDesc =
+    book.description.length > 256
+      ? `${book.description.slice(0, 256)}...`
+      : book.description;
+
   return (
     <StyledContainer>
       <StyledSection>
@@ -88,10 +93,7 @@ export default function BookDetailInformation({ book = {} }) {
         <StyledDescription>
           <summary>
             <strong>Mô tả: </strong>
-            <p data-indicator="short-desc">{`${book.description.slice(
-              0,
-              256
-            )}...`}</p>
+            <p data-indicator="short-desc">{shortDesc}</p>
           </summary>
           <p>{book.description}</p>
         </StyledDescription>
