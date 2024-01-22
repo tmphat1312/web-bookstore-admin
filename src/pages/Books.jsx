@@ -1,7 +1,15 @@
-import BackgroundHeading from "../ui/headings/BackgroundHeading";
+import BookTable from "../features/books/BookTable";
+import BookTableOperations from "../features/books/BookTableOperations";
+import PageHeading from "../ui/headings/PageHeading";
 
 function Books() {
-  return <BackgroundHeading>Sản phẩm</BackgroundHeading>;
+  return (
+    <>
+      <PageHeading>Sản phẩm</PageHeading>
+      <BookTableOperations />
+      <BookTable />
+    </>
+  );
 }
 
 export default Books;
