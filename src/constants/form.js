@@ -31,10 +31,6 @@ function maxValue(field, value) {
   return `${field} phải nhỏ hơn ${value}`;
 }
 
-export const LENGTH = {
-  PHONE: 10,
-};
-
 export const MIN_LENGTH = {
   FULL_NAME: 3,
   PRODUCT_NAME: 3,
@@ -54,14 +50,13 @@ export const MIN_VALUE = {
 };
 
 export const MAX_VALUE = {
-  PRICE: 10000000,
+  PRICE: 10_000_000,
   STOCK_AMOUNT: 1000,
 };
 
 export const FORM_LABELS = {
   EMAIL: "Email",
   FULL_NAME: "Tên",
-  PHONE: "Số điện thoại",
   PASSWORD: "Mật khẩu",
   PRODUCT_NAME: "Tên sản phẩm",
   PRICE: "Giá",
