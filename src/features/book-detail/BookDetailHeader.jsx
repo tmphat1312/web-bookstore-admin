@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { useMoveBack } from "../../hooks/useMoveBack";
-import ButtonText from "../../ui/buttons/ButtonText";
+import BackButton from "../../ui/BackButton";
 
 const StyledHeader = styled.header`
   grid-column: 1 / -1;
@@ -11,15 +10,10 @@ const StyledHeader = styled.header`
 `;
 
 export default function BookDetailHeader({ book = {} }) {
-  const moveBack = useMoveBack();
-
   return (
     <StyledHeader>
       <h1>Thông tin sách #{book.id}</h1>
-      <ButtonText onClick={moveBack}>
-        <span role="presentation">&larr;</span>
-        <span>Quay lại</span>
-      </ButtonText>
+      <BackButton />
     </StyledHeader>
   );
 }
