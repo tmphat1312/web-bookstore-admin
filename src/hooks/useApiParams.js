@@ -10,7 +10,7 @@ export function useApiParams({ filterFields = [] } = {}) {
   const [searchParams] = useSearchParams();
 
   // Pagination
-  const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
+  const page = searchParams.get("page") ? Number(searchParams.get("page")) : 1;
 
   // Search
   const q = searchParams.get("q") ?? "";

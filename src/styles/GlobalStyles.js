@@ -199,7 +199,16 @@ export default createGlobalStyle`
     object-position: center;
     font-size: 0.75rem;
 
-    filter: grayscale(var(--image-grayscale)) opacity(var(--image-opacity));
+    /* Transition to "off" (dim) */
+    transition-duration: 500ms;
+    transition-delay: 500ms; /* Delay slightly */
+    transition-timing-function: ease-out;
+
+    .dark-mode & {
+      filter: brightness(70%) contrast(150%);
+      transition-property: filter;
+    }
+
   }
 
   .sr-only {
@@ -216,6 +225,16 @@ export default createGlobalStyle`
 
   .text-center {
     text-align: center;
+  }
+
+  .dim {
+    filter: brightness(40%) grayscale(50%);
+    transition-property: filter;
+
+    /* Transition to "off" (dim) */
+    transition-duration: 0.5s;
+    transition-delay: 0.5s; /* Delay slightly */
+    transition-timing-function: ease-out;
   }
 `;
 

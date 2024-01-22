@@ -4,13 +4,13 @@ import { useBooks } from "./useBooks";
 import LoadingProgress from "../../ui/LoadingProgress";
 import Pagination from "../../ui/Pagination";
 import Table from "../../ui/Table";
-// import CreateBookAction from "./CreateBookAction";
+import CreateBookAction from "./CreateBookAction";
 
 export default function BookTable() {
   const state = useBooks();
 
   return (
-    <LoadingProgress {...state} resourceName="Tài khoản">
+    <LoadingProgress {...state} resourceName="sách">
       <Table columns="90px 1.25fr 20ch 14ch 20ch 5.6rem">
         <Table.Header>
           <div>Ảnh</div>
@@ -30,7 +30,7 @@ export default function BookTable() {
         </Table.Footer>
       </Table>
 
-      {/* <CreateBookAction /> */}
+      <CreateBookAction />
     </LoadingProgress>
   );
 }

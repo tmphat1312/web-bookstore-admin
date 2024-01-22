@@ -26,6 +26,8 @@ const StyledBaseModal = styled.div`
   background-color: var(--color-grey-0);
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-lg);
+  max-block-size: 90%;
+  overflow: auto;
 `;
 
 const StyledModal = styled(StyledBaseModal)`
