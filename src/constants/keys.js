@@ -5,4 +5,5 @@ export const QUERY_KEYS = {
   BOOKS: "books",
   BOOK: "book",
   BOOK_CATEGORIES: "bookCategories",
+  COUNTING: "counting",
 };
