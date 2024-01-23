@@ -164,5 +164,6 @@ export const FORM_RULES = {
       value: new Date().getFullYear(),
       message: maxValue(FORM_LABELS.YEAR, new Date().getFullYear()),
     },
+    valueAsNumber: true,
   },
 };

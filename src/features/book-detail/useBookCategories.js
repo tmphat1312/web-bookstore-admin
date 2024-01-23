@@ -15,6 +15,12 @@ export function useBookCategories() {
     refetchOnWindowFocus: false,
     refetchOnMount: false,
   });
+  const bookCategories = Array.isArray(data) ? data : [];
 
-  return { isLoading, error, bookCategories: data || [] };
+  const bookCategoryOptions = bookCategories.map((category) => ({
+    label: category.name,
+    value: category.id,
+  }));
+
+  return { isLoading, error, bookCategories, bookCategoryOptions };
 }
