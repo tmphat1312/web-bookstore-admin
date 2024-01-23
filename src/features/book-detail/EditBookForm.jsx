@@ -11,9 +11,14 @@ import FormHeading from "../../ui/forms/FormHeading";
 import FormRow from "../../ui/forms/FormRow";
 import Input from "../../ui/forms/Input";
 import Textarea from "../../ui/forms/Textarea";
+import { useBookCategories } from "./useBookCategories";
+import SpinnerMini from "../../ui/spinners/SpinnerMini";
+import Select from "../../ui/forms/Select";
 
 export default function EditBookForm({ bookToEdit = {} }) {
   const { isEditing, editBook } = useEditBook(bookToEdit.id);
+  const { isLoading: isLoadingCategories, bookCategoryOptions } =
+    useBookCategories();
   const navigate = useNavigate();
 
   const defaultValues = {
@@ -53,6 +58,14 @@ export default function EditBookForm({ bookToEdit = {} }) {
 
       <FormRow label="Năm xuất bản" property="publishedYear" errors={errors}>
         <Input type="number" {...register("publishedYear", FORM_RULES.YEAR)} />
+      </FormRow>
+
+      <FormRow label="Danh mục" property="category" errors={errors}>
+        {isLoadingCategories ? (
+          <SpinnerMini />
+        ) : (
+          <Select options={bookCategoryOptions} {...register("category")} />
+        )}
       </FormRow>
 
       <FormRow label="Giá nhập" property="purchasePrice" errors={errors}>
