@@ -8,6 +8,7 @@ const StyledSelect = styled.select`
   border-radius: var(--border-radius-sm);
   background-color: var(--color-grey-0);
   box-shadow: var(--shadow-sm);
+  font-size: 0.875rem;
 `;
 
 const Select = forwardRef(({ options, value, onChange, ...props }, ref) => {

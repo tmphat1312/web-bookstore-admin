@@ -18,7 +18,7 @@ export default function BookCategoryFilter() {
     value: category.id,
     label: category.name,
   }));
-  options.unshift({ value: "all", label: "Tất cả" });
+  options.unshift({ value: "all", label: "Tất cả danh mục" });
 
   return <SelectFilter options={options} filterField="category" />;
 }
