@@ -12,6 +12,7 @@ export function useDeleteCategory(id) {
     successMsg: "Xóa danh mục sản phẩm thành công!",
     onSuccess: () => {
       queryClient.invalidateQueries(QUERY_KEYS.BOOK_CATEGORIES);
+      queryClient.invalidateQueries(QUERY_KEYS.COUNTING);
     },
   });
 
