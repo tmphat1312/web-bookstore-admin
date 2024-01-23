@@ -8,7 +8,7 @@ export const getBook = factory.getItemById;
 export const createEditBook = factory.createEditItem;
 export const deleteBook = factory.deleteItem;
 export const getBookCategories = async function () {
-  const { data } = await axiosClient.get("/categories");
+  const { data } = await axiosClient.get("/categories?sort=name");
 
   return data;
 };

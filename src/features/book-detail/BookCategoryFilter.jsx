@@ -1,10 +1,10 @@
-import { useBookCategories } from "./useBookCategories";
-import SpinnerMini from "../../ui/spinners/SpinnerMini";
 import ErrorLoading from "../../ui/ErrorLoading";
 import SelectFilter from "../../ui/SelectFilter";
+import SpinnerMini from "../../ui/spinners/SpinnerMini";
+import { useBookCategories } from "./useBookCategories";
 
 export default function BookCategoryFilter() {
-  const { isLoading, error, bookCategories } = useBookCategories();
+  const { isLoading, error, bookCategoryOptions } = useBookCategories();
 
   if (isLoading) {
     return <SpinnerMini />;
@@ -14,11 +14,7 @@ export default function BookCategoryFilter() {
     return <ErrorLoading error={error} />;
   }
 
-  const options = bookCategories.map((category) => ({
-    value: category.id,
-    label: category.name,
-  }));
-  options.unshift({ value: "all", label: "Tất cả danh mục" });
+  bookCategoryOptions.unshift({ value: "all", label: "Tất cả danh mục" });
 
-  return <SelectFilter options={options} filterField="category" />;
+  return <SelectFilter options={bookCategoryOptions} filterField="category" />;
 }

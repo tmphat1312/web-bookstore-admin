@@ -10,20 +10,26 @@ import FormButtonsContainer from "../../ui/forms/FormButtonsContainer";
 import FormHeading from "../../ui/forms/FormHeading";
 import FormRow from "../../ui/forms/FormRow";
 import Input from "../../ui/forms/Input";
+import Select from "../../ui/forms/Select";
 import Textarea from "../../ui/forms/Textarea";
+import SpinnerMini from "../../ui/spinners/SpinnerMini";
+import { useBookCategories } from "./useBookCategories";
 
 export default function CreateBookForm() {
   const navigate = useNavigate();
   const { isCreating, createBook } = useCreateBook();
+  const { isLoading: isLoadingCategories, bookCategoryOptions } =
+    useBookCategories();
 
   const defaultValues = {
     name: "",
     description: "",
     author: "",
-    publishedYear: "",
-    purchasePrice: "",
-    sellingPrice: "",
-    quantity: "",
+    publishedYear: new Date().getFullYear(),
+    purchasePrice: 10_000,
+    sellingPrice: 10_000,
+    quantity: 1,
+    category: "658be841b3eba6ae4c0e382b", // unclassified
   };
 
   const { register, handleSubmit, reset, formState } = useForm({
@@ -53,6 +59,14 @@ export default function CreateBookForm() {
 
       <FormRow label="Năm xuất bản" property="publishedYear" errors={errors}>
         <Input type="number" {...register("publishedYear", FORM_RULES.YEAR)} />
+      </FormRow>
+
+      <FormRow label="Danh mục" property="category" errors={errors}>
+        {isLoadingCategories ? (
+          <SpinnerMini />
+        ) : (
+          <Select options={bookCategoryOptions} {...register("category")} />
+        )}
       </FormRow>
 
       <FormRow label="Giá nhập" property="purchasePrice" errors={errors}>
