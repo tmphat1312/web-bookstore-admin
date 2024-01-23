@@ -10,20 +10,28 @@ import FormButtonsContainer from "../../ui/forms/FormButtonsContainer";
 import FormHeading from "../../ui/forms/FormHeading";
 import FormRow from "../../ui/forms/FormRow";
 import Input from "../../ui/forms/Input";
+import Select from "../../ui/forms/Select";
 import Textarea from "../../ui/forms/Textarea";
+import SpinnerMini from "../../ui/spinners/SpinnerMini";
+import { useBookCategories } from "./useBookCategories";
+import FileInput from "../../ui/forms/FileInput";
 
-export default function CreateBookForm() {
+export default function CreateBookForm({ onImageChange, image, file }) {
   const navigate = useNavigate();
   const { isCreating, createBook } = useCreateBook();
+  const { isLoading: isLoadingCategories, bookCategoryOptions } =
+    useBookCategories();
+  const isWorking = isCreating || isLoadingCategories;
 
   const defaultValues = {
     name: "",
     description: "",
     author: "",
-    publishedYear: "",
-    purchasePrice: "",
-    sellingPrice: "",
-    quantity: "",
+    publishedYear: new Date().getFullYear(),
+    purchasePrice: 10_000,
+    sellingPrice: 10_000,
+    quantity: 1,
+    category: "658be841b3eba6ae4c0e382b", // unclassified
   };
 
   const { register, handleSubmit, reset, formState } = useForm({
@@ -32,6 +40,10 @@ export default function CreateBookForm() {
   const { errors } = formState;
 
   function onSubmit(data) {
+    if (image) {
+      data.image = file;
+    }
+
     createBook({ data }, { onSuccess: () => navigate("/books") });
   }
 
@@ -51,8 +63,26 @@ export default function CreateBookForm() {
         <Input {...register("author", FORM_RULES.FULL_NAME)} />
       </FormRow>
 
+      <FormRow label="Bìa sách" property="image">
+        <FileInput
+          disabled={isWorking}
+          required
+          accept="image/*"
+          onChange={onImageChange}
+          value={image}
+        />
+      </FormRow>
+
       <FormRow label="Năm xuất bản" property="publishedYear" errors={errors}>
         <Input type="number" {...register("publishedYear", FORM_RULES.YEAR)} />
+      </FormRow>
+
+      <FormRow label="Danh mục" property="category" errors={errors}>
+        {isLoadingCategories ? (
+          <SpinnerMini />
+        ) : (
+          <Select options={bookCategoryOptions} {...register("category")} />
+        )}
       </FormRow>
 
       <FormRow label="Giá nhập" property="purchasePrice" errors={errors}>
@@ -90,7 +120,7 @@ export default function CreateBookForm() {
         <Button variation="secondary" type="button" onClick={resetToDefault}>
           Hủy
         </Button>
-        <Button disabled={isCreating}>Thêm thông tin</Button>
+        <Button disabled={isWorking}>Thêm thông tin</Button>
       </FormButtonsContainer>
     </Form>
   );

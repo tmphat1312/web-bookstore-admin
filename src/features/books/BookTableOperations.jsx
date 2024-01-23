@@ -15,7 +15,7 @@ const sortByOptions = [
 
 export default function BookTableOperations() {
   return (
-    <TableOperations end>
+    <TableOperations end="true">
       <BookCategoryFilter />
 
       <SortBy options={sortByOptions} />
