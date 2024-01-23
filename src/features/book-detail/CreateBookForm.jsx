@@ -104,7 +104,9 @@ export default function CreateBookForm() {
         <Button variation="secondary" type="button" onClick={resetToDefault}>
           Hủy
         </Button>
-        <Button disabled={isCreating}>Thêm thông tin</Button>
+        <Button disabled={isCreating || isLoadingCategories}>
+          Thêm thông tin
+        </Button>
       </FormButtonsContainer>
     </Form>
   );
