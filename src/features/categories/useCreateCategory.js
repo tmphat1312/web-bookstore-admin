@@ -12,6 +12,7 @@ export function useCreateCategory() {
     successMsg: "Danh mục đã được tạo thành công!",
     onSuccess: () => {
       queryClient.invalidateQueries(QUERY_KEYS.BOOK_CATEGORIES);
+      queryClient.invalidateQueries(QUERY_KEYS.COUNTING);
     },
   });
 
