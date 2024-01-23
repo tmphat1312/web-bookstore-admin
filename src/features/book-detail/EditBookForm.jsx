@@ -70,7 +70,6 @@ export default function EditBookForm({
       <FormRow label="Bìa sách" property="image">
         <FileInput
           disabled={isWorking}
-          required
           accept="image/*"
           onChange={onImageChange}
           value={image}
