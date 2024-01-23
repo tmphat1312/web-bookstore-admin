@@ -1,7 +1,7 @@
 import { useSearchParams } from "react-router-dom";
-import Select from "./Select";
+import Select from "./forms/Select";
 
-function SortBy({ options }) {
+function SortBy({ options = [] }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const sortBy = searchParams.get("sortBy") || "";
 
@@ -15,6 +15,10 @@ function SortBy({ options }) {
     }
 
     setSearchParams(searchParams);
+  }
+
+  if (options.length <= 0) {
+    return null;
   }
 
   return (
