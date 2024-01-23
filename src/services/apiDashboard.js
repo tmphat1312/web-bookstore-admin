@@ -1,4 +1,5 @@
 import axiosClient from "../utils/axios";
+import apiItemsFactory from "../utils/apiItemsFactory";
 
 export async function countItems(name) {
   const url = name.includes("?") ? `${name}&limit=1` : `${name}?limit=1`;
@@ -13,10 +14,6 @@ export async function countItemsByPath(path) {
   return data;
 }
 
-export async function getSalesStatistics() {
-  const { data } = await axiosClient(
-    "/statistics/revenue-and-profit-stats?type=month"
-  );
-
-  return data;
-}
+export const getSalesStatistics = apiItemsFactory(
+  "/statistics/revenue-and-profit-stats"
+).getItems;
