@@ -9,8 +9,10 @@ import { QUERY_KEYS } from "../../constants/keys";
 import { objectToArray } from "../../utils/helpers";
 
 export function useBooks() {
-  const { page, filters, q } = useApiParams({ filterFields: ["category"] });
-  const queryOptions = { page, filters, q };
+  const { page, filters, q, sortBy } = useApiParams({
+    filterFields: ["category"],
+  });
+  const queryOptions = { page, filters, q, sortBy };
   const queryKey = [QUERY_KEYS.BOOKS, objectToArray(queryOptions)].flat();
 
   const {
