@@ -23,12 +23,12 @@ export default function RevenueChart({ data }) {
 
   const colors = isDarkMode
     ? {
-        revenue: { stroke: "#4f46e5", fill: "#4f46e5" },
+        revenue: { stroke: "#0ea5e9", fill: "#0ea5e9" },
         text: "#e5e7eb",
         background: "#18212f",
       }
     : {
-        revenue: { stroke: "#4f46e5", fill: "#c7d2fe" },
+        revenue: { stroke: "#0ea5e9", fill: "#c7d2fe" },
         text: "#374151",
         background: "#fff",
       };
