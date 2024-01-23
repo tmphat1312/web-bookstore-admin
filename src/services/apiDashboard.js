@@ -12,3 +12,11 @@ export async function countItemsByPath(path) {
 
   return data;
 }
+
+export async function getSalesStatistics() {
+  const { data } = await axiosClient(
+    "/statistics/revenue-and-profit-stats?type=month"
+  );
+
+  return data;
+}
