@@ -1,25 +1,32 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useBookCategories } from "./useBookCategories";
 import { useEditBook } from "./useEditBook";
 
 import { FORM_RULES } from "../../constants/form";
 
 import Button from "../../ui/buttons/Button";
+import FileInput from "../../ui/forms/FileInput";
 import Form from "../../ui/forms/Form";
 import FormButtonsContainer from "../../ui/forms/FormButtonsContainer";
 import FormHeading from "../../ui/forms/FormHeading";
 import FormRow from "../../ui/forms/FormRow";
 import Input from "../../ui/forms/Input";
-import Textarea from "../../ui/forms/Textarea";
-import { useBookCategories } from "./useBookCategories";
-import SpinnerMini from "../../ui/spinners/SpinnerMini";
 import Select from "../../ui/forms/Select";
+import Textarea from "../../ui/forms/Textarea";
+import SpinnerMini from "../../ui/spinners/SpinnerMini";
 
-export default function EditBookForm({ bookToEdit = {} }) {
+export default function EditBookForm({
+  bookToEdit = {},
+  onImageChange,
+  image,
+  file,
+}) {
+  const navigate = useNavigate();
   const { isEditing, editBook } = useEditBook(bookToEdit.id);
   const { isLoading: isLoadingCategories, bookCategoryOptions } =
     useBookCategories();
-  const navigate = useNavigate();
+  const isWorking = isEditing || isLoadingCategories;
 
   const defaultValues = {
     name: bookToEdit.name,
@@ -37,6 +44,10 @@ export default function EditBookForm({ bookToEdit = {} }) {
   const { errors } = formState;
 
   function onSubmit(data) {
+    if (image) {
+      data.image = file;
+    }
+
     editBook({ data }, { onSuccess: () => navigate(-1) });
   }
 
@@ -54,6 +65,16 @@ export default function EditBookForm({ bookToEdit = {} }) {
 
       <FormRow label="Tác giả" property="author" errors={errors}>
         <Input {...register("author", FORM_RULES.FULL_NAME)} />
+      </FormRow>
+
+      <FormRow label="Bìa sách" property="image">
+        <FileInput
+          disabled={isWorking}
+          required
+          accept="image/*"
+          onChange={onImageChange}
+          value={image}
+        />
       </FormRow>
 
       <FormRow label="Năm xuất bản" property="publishedYear" errors={errors}>
@@ -103,7 +124,7 @@ export default function EditBookForm({ bookToEdit = {} }) {
         <Button variation="secondary" type="button" onClick={resetToDefault}>
           Hủy
         </Button>
-        <Button disabled={isEditing}>Lưu thay đổi</Button>
+        <Button disabled={isWorking}>Lưu thay đổi</Button>
       </FormButtonsContainer>
     </Form>
   );
